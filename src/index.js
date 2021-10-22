@@ -8,7 +8,11 @@ import './global.scss';
 
 // Experimental for development
 // TODO: Fix this on production
-import './../node_modules/@tailwindcss/postcss7-compat/dist/tailwind.min.css';
+
+// NOTE IF THE TAILWIND IS NOT UPDATING NEW CSS PLEASE
+// UNCOMMENT THIS LINE
+// IN PRODUCTION YOU CANNOT BUILD WITH THE TAILWIND ENABLED
+// import './../node_modules/@tailwindcss/postcss7-compat/dist/tailwind.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
