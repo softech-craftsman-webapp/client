@@ -53,10 +53,6 @@ function DashboardApp() {
       <Route path={`${ROOT}/settings`}>
         <Settings/>
       </Route>
-
-      <Route path={`${ROOT}/*`}>
-        <p>Error 404 - Not found</p>
-      </Route>
     </>
   )
 }

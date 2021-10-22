@@ -13,7 +13,7 @@ class Input extends React.Component {
 
     render() {
       return(
-        <input className={`${style.input}`}
+        <input className={`appearance-none ${style.input} border border-gray-300 focus:outline rounded sm:text-sm focus:ring-2 focus:ring-offset-2 focus:ring-black`}
                 type={this.props.type}
                 required={this.props.required}
                 id={this.props.id}

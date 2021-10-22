@@ -4,15 +4,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { Toaster } from 'react-hot-toast';
+
+// styles
 import './global.scss';
-
-// Experimental for development
-// TODO: Fix this on production
-
-// NOTE IF THE TAILWIND IS NOT UPDATING NEW CSS PLEASE
-// UNCOMMENT THIS LINE
-// IN PRODUCTION YOU CANNOT BUILD WITH THE TAILWIND ENABLED
-// import './../node_modules/@tailwindcss/postcss7-compat/dist/tailwind.min.css';
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
