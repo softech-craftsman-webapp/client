@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Toaster } from 'react-hot-toast';
+import './global.scss';
+
+// Experimental for development
+// TODO: Fix this on production
+import './../node_modules/@tailwindcss/postcss7-compat/dist/tailwind.min.css';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Toaster position="top-right"
+      reverseOrder={false}
+    />
+    <App/>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('__ROOT_APP__')
 );
 
 // If you want to start measuring performance in your app, pass a function

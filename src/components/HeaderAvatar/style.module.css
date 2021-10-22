@@ -1,0 +1,27 @@
+.main_button {
+    @apply text-center uppercase text-sm text-white bg-black mt-1 md:mt-0 w-9 h-9 md:h-10 md:w-10 font-semibold rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-black;
+}
+
+.dropdown {
+    @apply mt-2 absolute right-0 origin-top-right text-left shadow border-gray-50 rounded-lg;
+}
+
+.dropdown_block {
+    @apply border-t border-gray-200 py-1;
+}
+
+.dropdown_item {
+    @apply text-sm block px-6 py-1.5 leading-tight hover:bg-gray-200;
+}
+
+.sign_out {
+    @apply text-sm block w-full px-6 py-1.5 text-left leading-tight hover:bg-gray-200;
+}
+
+.account_name {
+    @apply text-xl capitalize truncate font-semibold text-gray-900 leading-none;
+}
+
+.email {
+    @apply text-sm truncate lowercase py-1 text-gray-600 leading-none;
+}

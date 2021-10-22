@@ -1,0 +1,7 @@
+.space {
+    @apply px-5 mt-5 mb-5;
+}
+
+.logo {
+    @apply mt-6 h-12;
+}

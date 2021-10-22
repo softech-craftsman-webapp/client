@@ -1,0 +1,82 @@
+import validator from 'validator';
+import fetcher from '../../../helpers/fetcher';
+import toast from 'react-hot-toast';
+
+/**
+ * forgotPassword
+ * @param {*} data 
+ * @param {*} setState 
+ */
+const forgotPassword = (data, setState) => {
+  setState((prev) => {
+    return {
+      ...prev,
+      isOkay: false
+    }
+  });
+
+  fetcher('post', '/auth/forgot-password', data)
+    .then((res) => {
+      // success
+      if (res.data.success) {
+        setState((prev) => {
+          return {
+            ...prev,
+            success: true
+          }
+        });
+      }
+      // not succeed
+      else {
+        toast.error(res.data.message || 'There is an error on this request');        
+        setState((prev) => {
+          return {
+            ...prev,
+            success: false,
+          }
+        });
+      }
+    })
+    // client error
+    .catch((error) => {
+      (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
+
+      setState((prev) => {
+        return {
+          ...prev,
+          success: false,
+        }
+      });
+    });
+}
+
+/**
+ * forgotPassword Validation
+ * @param {*} state 
+ * @param {*} setState 
+ * @returns 
+ */
+const forgotPasswordCheck = (state, setState) => {
+  const { email } = state;
+
+  if ((typeof email !== 'undefined' && email && email != null)
+      &&
+      validator.isEmail(email))
+    {
+      return setState((prev) => {
+        return {
+          ...prev,
+          isOkay: true
+        }
+      });
+  }
+
+  return setState((prev) => {
+    return {
+      ...prev,
+      isOkay: false
+    }
+  });
+}
+
+export { forgotPassword, forgotPasswordCheck };

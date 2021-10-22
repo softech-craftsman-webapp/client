@@ -1,0 +1,11 @@
+.header {
+    @apply sticky content-center top-0 bg-gray-50 z-30 pt-3 pb-2;
+}
+
+.hamburger {
+    @apply text-gray-500 hover:text-gray-600 lg:hidden;
+}
+
+.header_container {
+    @apply flex content-center items-center justify-between h-10 -mb-px;
+}
