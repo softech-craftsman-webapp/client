@@ -7,6 +7,8 @@ import { Toaster } from 'react-hot-toast';
 
 // styles
 import './global.scss';
+// Please comment tailwindcss in production
+// import './tailwind.css'
 import './index.css'
 
 ReactDOM.render(

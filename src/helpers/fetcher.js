@@ -15,21 +15,20 @@ const axiosInstance = axios.create({
   responseType: 'json'
 });
 
-axiosInstance.interceptors.response.use((response) => {
-  return response
-}, function (error) {
-
-  if (error.response.status === 500) {
-    if(error.response.data.message.includes('invalid or expired jwt')) {
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response
+  }, 
+  (error) => {
+    if(error.response.data.message.includes('token is expired')) {
       return refreshTokenFetcher();
     }
+    
+    return Promise.reject(error);
   }
+);
 
-  return Promise.reject(error);
-});
-
-
-const refreshTokenFetcher = () => {
+const refreshTokenFetcher = (originalRequest) => {
   const config = {
     crossdomain: true,
     headers: {
@@ -42,7 +41,10 @@ const refreshTokenFetcher = () => {
   axios.get(`${process.env.REACT_APP_API_BASE}/auth/refresh`, config)
     .then((res) => {
       localStorage.setItem('token', res.data.payload.token);
+      localStorage.setItem('refresh_token', res.data.payload.refresh_token);
+      
       toast.success('Token refreshed!');
+      window.location.reload();
     })
     // client error
     .catch((error) => {
