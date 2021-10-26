@@ -1,5 +1,8 @@
 import { Route } from 'react-router-dom';
-
+import JobOfferCreate from '../job-offers/job-offer-create/JobOfferCreate';
+import JobOfferDetail from '../job-offers/job-offer-detail/JobOfferDetail';
+import JobOfferSearch from '../job-offers/job-offer-search/JobOfferSearch';
+import JobOfferList from '../job-offers/JobOfferList';
 import Main from './pages/main';
 import Jobs from './pages/jobs';
 import Applications from './pages/applications';
@@ -26,7 +29,7 @@ function DashboardApp() {
    */
   return(
     <>
-      <Route exact path={`${ROOT}`}>
+    <Route exact path={`${ROOT}`}>
         <Main/>
       </Route>
 
@@ -52,6 +55,26 @@ function DashboardApp() {
 
       <Route path={`${ROOT}/settings`}>
         <Settings/>
+      </Route>
+
+      <Route path={`${ROOT}/settings`}>
+        <p>User settings</p>
+      </Route>
+
+      <Route path={`${ROOT}/job-offers`}>
+        <JobOfferList/>
+      </Route>
+
+      <Route path={`${ROOT}/job-offer-search`}>
+        <JobOfferSearch/>
+      </Route>
+
+      <Route path={`${ROOT}/job-offer-create`}>
+        <JobOfferCreate/>
+      </Route>
+      
+      <Route path={`${ROOT}/job-offer`}>
+        <JobOfferDetail/>
       </Route>
     </>
   )

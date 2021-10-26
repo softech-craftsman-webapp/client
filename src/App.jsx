@@ -4,6 +4,7 @@ import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 import Main from './pages/main';
 import Dashboard from './pages/dashboard';
+import ServiceProviderList from './pages/serviceproviders/ServiceProviderList';
 import ForgotPassword from './pages/auth/forgot-password';
 import AuthChangePassword from './pages/auth/change-password';
 import Verify from './pages/auth/verify';
@@ -41,9 +42,10 @@ function App() {
           <AuthChangePassword/>
         </Route>  
 
-        {/* Protected route means that only logged in users can access it */}
+      {/* Protected route means that only logged in users can access it */}
         <ProtectedRoute path="/dashboard" component={Dashboard}/>
-
+        <ProtectedRoute path="/service-providers" component={ServiceProviderList}/>
+      
         <Route path="*">
           <p>Error 404 - Not found</p>
         </Route>
