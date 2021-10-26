@@ -5,6 +5,7 @@ import Register from './pages/auth/register';
 import Main from './pages/main';
 import Dashboard from './pages/dashboard';
 import ForgotPassword from './pages/auth/forgot-password';
+import FilePage from './pages/filePage';
 import AuthChangePassword from './pages/auth/change-password';
 import Verify from './pages/auth/verify';
 import ProtectedRoute from './helpers/ProtectedRoute';
@@ -43,6 +44,10 @@ function App() {
 
         {/* Protected route means that only logged in users can access it */}
         <ProtectedRoute path="/dashboard" component={Dashboard}/>
+
+        <Route exact path="/filepage">
+          <FilePage/>
+        </Route>  
 
         <Route path="*">
           <p>Error 404 - Not found</p>
