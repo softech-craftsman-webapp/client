@@ -1,29 +1,39 @@
-import React from 'react';
+import React ,{useState} from 'react';
+import { useHistory, Link } from "react-router-dom";
 import fetcher from '../../helpers/fetcher';
 import Button from '../Button';
+import Input from '../Input';
+import toast from 'react-hot-toast';
+
 
 /**
  * @description FileUpload component
  */
 
-class FileUpload extends React.Component
+function FileUpload()
 {
+  let history = useHistory();
+  const [selectedFile, setSelectedFile] = useState();
 
-  submit = (e) => {
-    e.preventDefault();
-    let formData = new FormData(e.target);
-    fetcher('post', '/files/upload', formData)
-    .then((response)=> {
-      console.log(response)
-      //pop up to do
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  };
+  const changeHandler = (e) => {
+    setSelectedFile(e.target.files[0]);
+ };
 
-  render()
-  {
+ submit = (e) => {
+  e.preventDefault();
+  let formData = new FormData(e.target);
+  fetcher('post', '/files/upload', formData)
+  .then((response)=> {
+    console.log(response)
+    //pop up to do
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+};
+
+
+ 
     
     return(
       <div>
@@ -39,8 +49,9 @@ class FileUpload extends React.Component
             
         </div>
       </div>
+
     );
-  }
+  
 
 }
 
