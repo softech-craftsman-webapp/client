@@ -19,16 +19,18 @@ function FileUpload()
     setSelectedFile(e.target.files[0]);
  };
 
- submit = (e) => {
-  e.preventDefault();
-  let formData = new FormData(e.target);
+ const submit = () => {
+  const formData = new FormData();
+	  formData.append('file', selectedFile);
+
   fetcher('post', '/files/upload', formData)
   .then((response)=> {
-    console.log(response)
-    //pop up to do
+      toast.success('File uploaded successfully');
+      history.push('/dashboard'); 
+    
   })
   .catch((error) => {
-    console.log(error);
+    toast.error('Error!');
   })
 };
 
