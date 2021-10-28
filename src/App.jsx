@@ -8,7 +8,8 @@ import ForgotPassword from './pages/auth/forgot-password';
 import AuthChangePassword from './pages/auth/change-password';
 import Verify from './pages/auth/verify';
 import ProtectedRoute from './helpers/ProtectedRoute';
-
+import TransactionCreate from './pages/transaction/transaction-create';
+import TransactionDetails from './pages/transaction/transaction-details';
 /**
  * Main app component
  * @returns {React.Component}
@@ -42,7 +43,18 @@ function App() {
         </Route>  
 
         {/* Protected route means that only logged in users can access it */}
-        <ProtectedRoute path="/dashboard" component={Dashboard}/>
+        {/*<Route exact path="/dashboard" >
+          <Dashboard/>
+  </Route>*/}
+      <ProtectedRoute path="/dashboard" component={Dashboard}/>
+
+        <Route exact path="/transaction/transaction-create">
+          <TransactionCreate/>
+        </Route>  
+
+        <Route exact path="/transaction/transaction-details">
+          <TransactionDetails/>
+        </Route>  
 
         <Route path="*">
           <p>Error 404 - Not found</p>
