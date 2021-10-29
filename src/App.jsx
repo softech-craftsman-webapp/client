@@ -10,6 +10,7 @@ import Verify from './pages/auth/verify';
 import ProtectedRoute from './helpers/ProtectedRoute';
 import TransactionCreate from './pages/transaction/transaction-create';
 import TransactionDetails from './pages/transaction/transaction-details';
+import TransactionList from './pages/transaction/transaction-list';
 /**
  * Main app component
  * @returns {React.Component}
@@ -54,6 +55,9 @@ function App() {
 
         <Route exact path="/transaction/transaction-details">
           <TransactionDetails/>
+        </Route>  
+        <Route exact path="/transaction/transaction-list">
+          <TransactionList/>
         </Route>  
 
         <Route path="*">
