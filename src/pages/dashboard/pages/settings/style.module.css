@@ -1,0 +1,11 @@
+.options {
+    @apply px-3 py-3 border hover:bg-gray-50 bg-white text-black rounded-md hover:shadow-sm cursor-pointer;
+}
+
+.email_verfication {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-gray-100 border-2 mb-10 rounded-md w-full px-2 py-2;
+}
+
+.space {
+    @apply px-5 mt-5 mb-5;
+}
