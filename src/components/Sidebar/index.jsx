@@ -126,7 +126,7 @@ class Sidebar extends React.Component {
                     <circle className={`fill-current text-gray-900`} cx="18.5" cy="18.5" r="4.5" />
                     <circle className={`fill-current text-gray-400`} cx="5.5" cy="18.5" r="4.5" />
                   </svg>
-                  <span className={`${style.text}`}>Ratings</span>
+                  <span className={`${style.text}`}>My reviews</span>
                 </div>
               </NavLink>
             </li>
@@ -140,7 +140,7 @@ class Sidebar extends React.Component {
                     <path className={`fill-current text-gray-900`} d="M1 1h22v23H1z" />
                     <path className={`fill-current text-gray-400`} d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z" />
                   </svg>
-                  <span className={`${style.text}`}>User Details</span>
+                  <span className={`${style.text}`}>My profile</span>
                 </div>
               </NavLink>
             </li>

@@ -18,6 +18,8 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
     require('@tailwindcss/jit'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/custom-forms'),

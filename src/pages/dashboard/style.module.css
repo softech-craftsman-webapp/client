@@ -5,3 +5,4 @@
 .content_area {
     @apply relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden;
 }
+

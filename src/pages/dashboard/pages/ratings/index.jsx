@@ -1,8 +1,14 @@
+import CenterFrame from "../../../../components/CenterFrame"
+import ReviewContent from "./ReviewContent";
+
 function Ratings() {
   return(
-    <>
-      <p>Ratings page</p>
-    </>
+    <div>
+      <p style= {{fontSize: "260%"}}>My reviews</p>
+      <ReviewContent>
+
+      </ReviewContent>
+    </div>
   )
 }
 
