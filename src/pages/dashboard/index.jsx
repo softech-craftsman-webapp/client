@@ -8,10 +8,25 @@ import GeoTracker from '../../components/Location/GeoTracker';
 // protected routes
 import DasboardApp from './DasboardApp';
 
+/**
+ * Protected Dashboard
+ * @returns {React.Component}
+ */
 function Dashboard(){
     const [isOpen, setOpen] = useState(false);
-    const geoDetails = JSON.parse(localStorage.getItem('geo_data') || '');
+    let geoDetails = {};
+    let latitude = 1;
+    let longitude = 1;
 
+    if(localStorage.getItem('geo_data') !== null){
+        geoDetails = JSON.parse(localStorage.getItem('geo_data') || '');
+        latitude = geoDetails.latitude;
+        longitude = geoDetails.longitude;
+    }
+
+    /**
+     * Dashboard page
+     */
     return (
         <div className={`${style.init}`}>
             {/* Sidebar */}
@@ -22,7 +37,8 @@ function Dashboard(){
                 {/*  Site header */}    
                 <Header isOpen={isOpen} setOpen={setOpen}/>
                 
-                <GeoTracker lat={geoDetails.latitude || 1} long={geoDetails.longitude || 1}/>
+                {/* Tracker */}
+                <GeoTracker lat={latitude} long={longitude}/>
 
                 <main className="container-fluid pt-5 h-screen bg-gray-50">
                     <DasboardApp/>
