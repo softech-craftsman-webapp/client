@@ -1,4 +1,4 @@
-import { toast } from 'react-hot-toast';
+import fetcher from './../../../helpers/fetcher';
 
 const tracker = () => {
     return navigator.geolocation.watchPosition(
@@ -9,7 +9,20 @@ const tracker = () => {
             localStorage.setItem('geo_data', JSON.stringify({latitude:lat, longitude:long}));
         },
         (error) => {
-            toast.error(error.message);
+            fetcher('get', '/locations/coordinates', null)
+                .then((res) => {
+                    if (res.data.message === "Success") {
+                        customTracker(res.data.payload.lat, res.data.payload.lon);
+                    } else {
+                        customTracker(1, 1);
+                    }
+                })
+                .catch((error) => {
+                    customTracker(1, 1);
+                    console.info(error);
+                });
+            
+            console.info(error);
         }
     );
 }

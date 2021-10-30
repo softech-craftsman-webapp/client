@@ -13,7 +13,7 @@ class Input extends React.Component {
 
     render() {
       return(
-        <input className={`${style.input} rounded-lg sm:text-sm focus:ring-2 focus:ring-offset-2 focus:ring-black`}
+        <input className={`${style.input} ${(this.props.type !== 'file' ? 'rounded-lg sm:text-sm focus:ring-2 focus:ring-offset-2 focus:ring-black' : '')} ${this.props.className}`}
                 type={this.props.type}
                 required={this.props.required}
                 id={this.props.id}
