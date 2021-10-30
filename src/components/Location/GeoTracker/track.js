@@ -28,7 +28,7 @@ const tracker = () => {
 }
 
 const customTracker = (lat, long) => {
-    return localStorage.setItem('geo_data', {lat, long});
+    return localStorage.setItem('geo_data', JSON.stringify({lat, long}));
 }
 
 export {customTracker, tracker};
