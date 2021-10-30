@@ -1,76 +1,13 @@
 import React from 'react';
-import { withGoogleMap, withScriptjs, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import { withGoogleMap, withScriptjs, GoogleMap, Marker } from "react-google-maps"
+
+import fetcher from '../../../helpers/fetcher';
+import toast from 'react-hot-toast';
 
 /**
  * @description Map component
  * @url @docs https://tomchentw.github.io/react-google-maps/#usage--configuration
  */
-class GoogleMaps extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
-
-    componentDidMount() {}
-
-    render() {
-        return(
-            <GoogleMap
-                defaultZoom={16}
-                defaultCenter={{lat: this.props.state.latitude, lng: this.props.state.longitude}}
-                onClick={ (e) => {
-                    this.props.setState({
-                        latitude: e.latLng.lat(),
-                        longitude: e.latLng.lng(),
-                        geo_name: 'New Location',
-                    })
-                }}
-            >
-                <Marker key={1} 
-                        name={'Current Location'}
-                        position={{ lat: this.props.state.latitude, lng: this.props.state.longitude }}>
-                    <InfoWindow options={{ maxWidth: 100 }}>
-                        <span className="text-sm">{this.props.state.geo_name || 'Current Location'}</span>
-                    </InfoWindow>
-                </Marker>
-            </GoogleMap>
-        );
-    }
-}
-
-const GoogleMapInit = withScriptjs(withGoogleMap(GoogleMaps));
-
-const Map = (props) => {
-    /**
-     * You need to obtain a Google Maps API key to use this component.
-     * @url https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&v=3.exp&libraries=geometry,places&callback=initMap
-     */
-    return (
-        <div className="w-full h-full rounded bg-gray-50 border border-gray-200">
-            <GoogleMapInit
-                state={props.state}
-                setState={props.setState}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&callback=initMap"
-                loadingElement={
-                    <div className="bg-gray-50 border border-gray-200 shadow-sm"
-                        style={{ height: `400px` }} />
-                }
-                containerElement={
-                    <div className="bg-gray-50 border border-gray-200 rounded shadow-sm" 
-                        style={{ height: `400px` }} 
-                    />
-                }
-                mapElement={
-                    <div className="bg-gray-50 border border-gray-200 rounded shadow-sm" 
-                        style={{ height: `100%` }} 
-                    />
-                }
-            />
-            {/* TODO: Implemented later API Connection */}
-            <p className="px-2 py-2">Address: example</p>
-        </div>
-    )
-}
 
 //
 // Example
@@ -95,4 +32,108 @@ const Map = (props) => {
 // }
 
 // export default Example;
+class GoogleMaps extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
+
+    componentDidMount() {
+        const data = {
+            latitude: this.props.state.latitude,
+            longitude: this.props.state.longitude,
+        };
+    
+        fetcher('post', '/locations/search', data)
+            .then((res) => {
+                if (res.data.message === "Success") {
+                    this.props.setState((prevState) => ({
+                        ...prevState,
+                        geo_name: res.data.payload.display_name,
+                    }));
+                }
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+    }
+
+    render() {
+        return(
+            <GoogleMap
+                defaultZoom={18}
+                defaultCenter={{lat: this.props.state.latitude, lng: this.props.state.longitude}}
+                onClick={ (e) => {
+                    const data = {
+                        latitude: e.latLng.lat(),
+                        longitude:  e.latLng.lng(),
+                    };
+
+                    fetcher('post', '/locations/search', data)
+                        .then((res) => {
+                            if (res.data.message === "Success") {
+                                this.props.setState((prevState) => ({
+                                    ...prevState,
+                                    geo_name: res.data.payload.display_name,
+                                }));
+                            }
+                        })
+                        .catch((error) => {
+                            toast.error(error.message);
+                        });
+
+                    this.props.setState((prevState) => ({
+                        ...prevState,
+                        latitude: data.latitude,
+                        longitude: data.longitude,
+                    }));
+                }}
+            >
+                <Marker key={1} 
+                        name={this.props.state.geo_name || 'Current Location'}
+                        position={{ lat: this.props.state.latitude, lng: this.props.state.longitude }}>
+                </Marker>
+            </GoogleMap>
+        );
+    }
+}
+
+const GoogleMapInit = withScriptjs(withGoogleMap(GoogleMaps));
+
+const Map = (props) => {
+    /**
+     * You need to obtain a Google Maps API key to use this component.
+     * @url https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&v=3.exp&libraries=geometry,places&callback=initMap
+     */
+    return (
+        <div className="rounded bg-white border border-gray-200 mb-5">
+            <GoogleMapInit
+                state={props.state}
+                setState={props.setState}
+                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&callback=initMap"
+                loadingElement={
+                    <div className="bg-gray-100 border border-gray-200 shadow-sm"
+                        style={{ height: `400px` }} />
+                }
+                containerElement={
+                    <div className="bg-gray-100 border border-gray-200 rounded shadow-sm" 
+                        style={{ height: `400px` }} 
+                    />
+                }
+                mapElement={
+                    <div className="bg-gray-100 border border-gray-200 rounded shadow-sm" 
+                        style={{ height: `100%` }} 
+                    />
+                }
+            />
+            
+            <hr></hr>
+
+            <span className="px-2 text-sm border-t-1 py-1 truncate w-full">
+                Current address: <span className="font-semibold">{props.state.geo_name || 'Not found'}</span>
+            </span>
+        </div>
+    )
+}
+
 export default Map;

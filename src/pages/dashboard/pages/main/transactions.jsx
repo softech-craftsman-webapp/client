@@ -8,7 +8,7 @@ function Transactions() {
             <div className="grid mt-4 gap-8 grid-cols-1">
                 {/* Iterable Item */}
                 <div className="flex flex-col">
-                    <div className="bg-white border rounded-xl p-4">
+                    <div className="bg-white border rounded p-4">
                         <div className="flex-none lg:flex">
                             <div className="h-full w-full lg:mb-0 mb-3">
                                 <span className="text-gray-600 font-bold">EUR</span>

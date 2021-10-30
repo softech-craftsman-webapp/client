@@ -8,7 +8,7 @@ function Contracts () {
             <div className="grid mt-4 gap-8 grid-cols-1">
                 {/* Iterable Item */}
                 <div className="flex flex-col">
-                    <div className="bg-white border rounded-xl p-4">
+                    <div className="bg-white border rounded p-4">
                         <div className="flex-none lg:flex">                    
                             {/* Content */}
                             <div className="flex-auto ml-3 justify-evenly py-2">
