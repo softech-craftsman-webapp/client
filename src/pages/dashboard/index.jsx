@@ -40,7 +40,7 @@ function Dashboard(){
                 {/* Tracker */}
                 <GeoTracker lat={latitude} long={longitude}/>
 
-                <main className="container-fluid pt-5 h-screen bg-gray-50">
+                <main className="container-fluid pt-5 min-h-screen">
                     <DasboardApp/>
                 </main>
             </div>
