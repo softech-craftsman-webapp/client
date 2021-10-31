@@ -3,10 +3,7 @@ import fetcher from './../../../helpers/fetcher';
 const tracker = () => {
     return navigator.geolocation.watchPosition(
         (position) => {
-            const lat = position.coords.latitude;
-            const long = position.coords.longitude;
-    
-            localStorage.setItem('geo_data', JSON.stringify({latitude:lat, longitude:long}));
+            customTracker(position.coords.latitude, position.coords.longitude);
         },
         (error) => {
             fetcher('get', '/locations/coordinates', null)
@@ -28,7 +25,7 @@ const tracker = () => {
 }
 
 const customTracker = (lat, long) => {
-    return localStorage.setItem('geo_data', JSON.stringify({lat, long}));
+    return localStorage.setItem('geo_data', JSON.stringify({latitude:lat, longitude:long}));
 }
 
 export {customTracker, tracker};
