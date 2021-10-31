@@ -27,7 +27,7 @@ function Dashboard(){
                 {/*  Site header */}    
                 <Header isOpen={isOpen} setOpen={setOpen}/>
 
-                <main className="container-fluid pt-5 min-h-screen">
+                <main className="container-fluid pt-5">
                     <DasboardApp/>
                 </main>
             </div>
