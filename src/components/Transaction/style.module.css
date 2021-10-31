@@ -1,0 +1,87 @@
+.card {
+  width: 300px;
+  height: 178px;
+  position: relative;
+  background-color: #f1404b;
+  overflow: hidden;
+  z-index: 1;
+
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.card_content {
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  float: left;
+  z-index: 1;
+}
+
+.wave {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  background: #780910;
+  z-index: -1;
+}
+
+.wave:before,
+.wave:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(193, 14, 26, 1);
+  background: -moz-linear-gradient(
+    top,
+    rgba(193, 14, 26, 1) 0%,
+    rgba(241, 64, 76, 0.3) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, rgba(193, 14, 26, 1)),
+    color-stop(100%, rgba(241, 64, 76, 0.3))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(193, 14, 26, 1) 0%,
+    rgba(241, 64, 76, 0.3) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(193, 14, 26, 1) 0%,
+    rgba(241, 64, 76, 0.3) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(193, 14, 26, 1) 0%,
+    rgba(241, 64, 76, 0.3) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(193, 14, 26, 1) 0%,
+    rgba(241, 64, 76, 0.3) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c10e1a', endColorstr='#f1404c', GradientType=0 );
+
+  -webkit-border-radius: 50% 50%;
+  -moz-border-radius: 50% 50%;
+  border-radius: 50% 50%;
+}
+
+.wave:after {
+  height: 300px;
+  width: 300px;
+  left: 30%;
+  top: 20%;
+  opacity: 0.8;
+}
+
+.wave:before {
+  height: 360px;
+  width: 360px;
+  left: -5%;
+  top: -70%;
+}
