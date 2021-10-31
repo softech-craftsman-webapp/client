@@ -8,6 +8,8 @@ import Ratings from './pages/ratings';
 import UserDetails from './pages/user-details';
 import Settings from './pages/settings';
 
+import NewJob from './pages/jobs/new';
+
 /**
  * Protected routes
  * @returns {JSX.Element}
@@ -30,27 +32,37 @@ function DashboardApp() {
         <Main/>
       </Route>
 
-      <Route path={`${ROOT}/jobs`}>
+      {/* Jobs */}
+      <Route exact path={`${ROOT}/jobs`}>
         <Jobs/>
       </Route>
+      
+      <Route exact path={`${ROOT}/jobs/new`}>
+        <NewJob/>
+      </Route>
 
-      <Route path={`${ROOT}/applications`}>
+      {/* Applications */}  
+      <Route exact path={`${ROOT}/applications`}>
         <Applications/>
       </Route>      
 
-      <Route path={`${ROOT}/transactions`}>
+      {/* Transactions */}
+      <Route exact path={`${ROOT}/transactions`}>
         <Transactions/>
       </Route>
 
-      <Route path={`${ROOT}/ratings`}>
+      {/* Ratings */}
+      <Route exact path={`${ROOT}/ratings`}>
         <Ratings/>
       </Route>
 
-      <Route path={`${ROOT}/user-details`}>
+      {/* User Details */}
+      <Route exact path={`${ROOT}/user-details`}>
         <UserDetails/>
       </Route>
 
-      <Route path={`${ROOT}/settings`}>
+      {/* Settings */}
+      <Route exact path={`${ROOT}/settings`}>
         <Settings/>
       </Route>
     </>

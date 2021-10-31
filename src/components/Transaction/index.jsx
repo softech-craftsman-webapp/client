@@ -20,7 +20,7 @@ import toast from 'react-hot-toast';
 // function Example() {
 //    const [state, setState] = useState({
 //       defaultAmount: 10.00,
-//       transactionId: null,
+//       transaction_id: null,
 //    });
  
 //    return (
@@ -52,7 +52,7 @@ class Transaction extends React.Component {
                     toast.success('Transaction has been completed');
                     this.props.setState((prevState) => ({
                         ...prevState,
-                        transactionId: res.data.payload.id
+                        transaction_id: res.data.payload.id
                     }));
                 } else {
                     toast.error('Payment has been failed');
@@ -98,8 +98,8 @@ class Transaction extends React.Component {
                         </div>
                     </div>
 
-                    <div className="col-span-2 w-100 md:w-1/2">
-                        <h4 className="text-xl font-semibold">Payment</h4>
+                    <div className="col-span-2 px-4 w-100 md:w-1/2">
+                        <h4 className="text-xl font-semibold">Transaction</h4>
 
                         {/* Payment */}
                         <div className="mt-2 pb-2">
@@ -118,7 +118,7 @@ class Transaction extends React.Component {
                     </div>
                 </div>
 
-                { this.props.state.transactionId && (
+                { this.props.state.transaction_id && (
                     <>
                         <hr className="mt-5"></hr>
                         <span className="text-sm truncate w-full">
