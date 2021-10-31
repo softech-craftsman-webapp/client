@@ -21,7 +21,7 @@ import toast from 'react-hot-toast';
 // function Example() {
 //   const [state, setState] = useState({
 //     targetFile: null,
-//     fileUrl: null,
+//     file_url: null,
 //   });
 
 //   return(
@@ -59,7 +59,7 @@ class FileUpload extends React.Component {
                     this.props.setState((prevState) => ({
                         ...prevState,
                         targetFile: null,
-                        fileUrl: res.data.payload.url
+                        file_url: res.data.payload.url
                     }));
                 } else {
                     toast.error('File upload failed');
@@ -78,7 +78,7 @@ class FileUpload extends React.Component {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-gray-100 px-2 py-2">
                     <div>
                     <Label htmlFor="file">Upload a file</Label>
-                    <Input className={`${style.file_upload}`}
+                    <Input className={`${style.file_upload} border-0 border-none`}
                             onChange={this.changeHandler}
                             type="file" 
                             name="file"
@@ -107,7 +107,7 @@ class FileUpload extends React.Component {
                     </div>
                 </div>
 
-                { this.props.state.fileUrl && (
+                { this.props.state.file_url && (
                     <>
                         <hr></hr>
                         <span className="px-2 text-sm border-t-1 py-1 truncate w-full">
