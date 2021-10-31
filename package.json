@@ -16,6 +16,7 @@
     "browser-fingerprint": "^0.1.0",
     "craco-image-optimizer-plugin": "^0.0.4",
     "history": "^5.0.0",
+    "moment": "^2.29.1",
     "postcss": "^7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

@@ -17,11 +17,11 @@ class Select extends React.Component {
                 name={this.props.name} 
                 id={this.props.id}
                 onChange={this.props.onChange}
-                selected={this.props.value}>
+                defaultValue={this.props.value}>
             <option value="" selected disabled hidden>{this.props.placeholder}</option>
             {this.props.options.map((option, index) => {
                 return(
-                    <option key={index} value={option.value}>{option.text}</option>
+                    <option key={index} value={option.value}>{option.label}</option>
                 )
             })}
         </select>
