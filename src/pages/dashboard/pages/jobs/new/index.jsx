@@ -94,7 +94,7 @@ function NewJob() {
                         <div className="items-center w-full">
                             {(state.step > 1 && state.step <= 5) &&
                                 <Button
-                                    className="w-auto md:px-10 float-left"
+                                    className="w-auto md:px-10 float-left bg-gray-50 font-semibold shadow-none"
                                     onClick={() => setState((prev) => {
                                         return {
                                             ...prev,
