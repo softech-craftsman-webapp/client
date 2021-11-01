@@ -94,6 +94,7 @@ function NewJob() {
                         <div className="items-center w-full">
                             {(state.step > 1 && state.step <= 5) &&
                                 <Button
+                                    className="w-auto md:px-10 float-left"
                                     onClick={() => setState((prev) => {
                                         return {
                                             ...prev,
@@ -110,7 +111,7 @@ function NewJob() {
                         <div className="items-center w-full">
                             {state.step < 5 &&
                                 <Button
-                                    className="w-auto md:px-10 md:mr-32 shadow-none float-right"
+                                    className="w-auto md:px-10 md:mr-32 float-right"
                                     onClick={() => setState((prev) => {
                                         return {
                                             ...prev,
@@ -122,7 +123,8 @@ function NewJob() {
                                 </Button>
                             }
                             {state.step === 5 &&
-                                <Button className={`w-auto md:px-10 md:mr-32 float-right`}
+                                <Button 
+                                    className="w-auto md:px-10 md:mr-32 float-right"
                                     onClick={handleSubmission}>
                                     Create Job
                                 </Button>
