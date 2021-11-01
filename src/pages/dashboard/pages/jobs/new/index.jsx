@@ -43,20 +43,20 @@ function NewJob() {
 
     const changeState = (e) => {
         const target = e.target;
-        const value  = target.type === 'checkbox' ? target.checked : target.value;
-        const name   = target.name;
-    
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
         setState((prev) => {
-          return {
-            ...prev,
-            [name]: value
-          }
+            return {
+                ...prev,
+                [name]: value
+            }
         });
     }
 
     const handleSubmission = (e) => {
         e.preventDefault();
-        
+
         createJob({
             latitude: state.latitude,
             longitude: state.longitude,
@@ -70,28 +70,46 @@ function NewJob() {
         }, setState);
     }
 
-    return(
+    return (
         <>
-            { (state.success) ? <Redirect to = {{ pathname: "/dashboard/jobs" }} /> : ''}
-            
+            {(state.success) ? <Redirect to={{ pathname: "/dashboard/jobs" }} /> : ''}
+
             <div className='min-h-screen'>
                 {/* Title */}
                 <h1 className="text-3xl font-semibold pb-10">Create New Job</h1>
 
                 {/* Steps */}
                 <div className="pb-24">
-                    <Step1 state={state} setState={setState} changeState={changeState}/>
-                    <Step2 state={state} setState={setState} changeState={changeState}/>
-                    <Step3 state={state} setState={setState} changeState={changeState}/>
-                    <Step4 state={state} setState={setState} changeState={changeState}/>
-                    <Step5 state={state} setState={setState} changeState={changeState}/>
+                    <Step1 state={state} setState={setState} changeState={changeState} />
+                    <Step2 state={state} setState={setState} changeState={changeState} />
+                    <Step3 state={state} setState={setState} changeState={changeState} />
+                    <Step4 state={state} setState={setState} changeState={changeState} />
+                    <Step5 state={state} setState={setState} changeState={changeState} />
                 </div>
 
                 {/* Actions panel on bottom */}
                 <div className="fixed bg-gray-50 bottom-0 border-t w-full px-2 py-3">
                     <div className='grid grid-cols-2'>
+                        {/* Left side */}
                         <div className="flex items-center">
-                            { state.step < 5 &&
+                            {(state.step > 1 && state.step <= 5) &&
+                                <Button
+                                    className="w-auto md:px-10 bg-gray-50 font-semibold text-black"
+                                    onClick={() => setState((prev) => {
+                                        return {
+                                            ...prev,
+                                            step: prev.step - 1
+                                        }
+                                    })}
+                                > 
+                                  Back
+                                </Button>
+                            }
+                        </div>
+
+                        {/* Right side */}
+                        <div className="flex items-center">
+                            {state.step < 5 &&
                                 <Button
                                     className="w-auto mr-2 md:px-10 font-semibold shadow-none"
                                     onClick={() => setState((prev) => {
@@ -104,34 +122,18 @@ function NewJob() {
                                     Next
                                 </Button>
                             }
-                            { (state.step > 1 && state.step <= 5) &&
-                                <Button
-                                    className="w-auto md:px-10 bg-gray-50 text-black"
-                                    onClick={() => setState((prev) => {
-                                        return {
-                                            ...prev,
-                                            step: prev.step - 1
-                                        }
-                                    })}
-                                >
-                                    Back
-                                </Button>
-                            }
-                        </div>
-
-                        {state.step === 5 &&
-                            <div>
+                            {state.step === 5 &&
                                 <Button className={`w-auto mr-8 md:mr-32 px-10 float-right`}
                                     onClick={handleSubmission}>
                                     Create Job
                                 </Button>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </>
-      
+
     )
 }
 
@@ -141,33 +143,32 @@ function Step1(props) {
 
     useEffect(() => {
         importCategories(setCategories);
-        console.log(categories);
     }, []);
 
     if (props.state.step !== 1) {
         return null
     }
 
-    return(
+    return (
         <>
-            <Header step={props.state.step} title="Choose a category"/>
+            <Header step={props.state.step} title="Choose a category" />
 
-            {(categories.length > 0 ) ? (
+            {(categories.length > 0) ? (
                 <>
                     <Label htmlFor="category_id">Which category is suitible for your job?</Label>
                     <Select name="category_id"
-                            id="category_id"
-                            value={props.state.category_id || ""}
-                            placeholder="Choose categories..."
-                            onChange={(e) => {
-                                props.setState((prev) => {
-                                    return {
-                                        ...prev,
-                                        category_id: e.target.value
-                                    }
-                                })
-                            }}
-                            options={categories}/>
+                        id="category_id"
+                        value={props.state.category_id || ""}
+                        placeholder="Choose categories..."
+                        onChange={(e) => {
+                            props.setState((prev) => {
+                                return {
+                                    ...prev,
+                                    category_id: e.target.value
+                                }
+                            })
+                        }}
+                        options={categories} />
                 </>
             ) : (
                 <div className="text-center">
@@ -176,7 +177,7 @@ function Step1(props) {
                     </p>
                 </div>
             )}
-                    
+
         </>
     );
 }
@@ -187,53 +188,53 @@ function Step2(props) {
         return null
     }
 
-    return(
+    return (
         <>
-            <Header step={props.state.step} title="Fill the details"/>
+            <Header step={props.state.step} title="Fill the details" />
 
             <Label htmlFor="name">Title</Label>
             <Input type="text"
-                    id="name" 
-                    name="name"
-                    autoComplete="off"
-                    value={props.state.name || ""}
-                    placeholder="IT Specialist"
-                    onChange={props.changeState}/>
+                id="name"
+                name="name"
+                autoComplete="off"
+                value={props.state.name || ""}
+                placeholder="IT Specialist"
+                onChange={props.changeState} />
 
             <Label htmlFor="description">Description</Label>
             <Input type="text"
-                    id="description" 
-                    name="description"
-                    autoComplete="off"
-                    value={props.state.description || ""}
-                    placeholder="You need to.."
-                    onChange={props.changeState}/>
+                id="description"
+                name="description"
+                autoComplete="off"
+                value={props.state.description || ""}
+                placeholder="You need to.."
+                onChange={props.changeState} />
 
             <Label htmlFor="valid_until">Vali until</Label>
             <Input type="date"
-                    id="valid_until" 
-                    name="valid_until"
-                    autoComplete="off"
-                    value={props.state.valid_until || ""}
-                    onChange={(e) => {
-                        props.setState((prev) => {
-                            return {
-                                ...prev,
-                                valid_until: e.target.value
-                            }
-                        })
-                    }}/>
+                id="valid_until"
+                name="valid_until"
+                autoComplete="off"
+                value={props.state.valid_until || ""}
+                onChange={(e) => {
+                    props.setState((prev) => {
+                        return {
+                            ...prev,
+                            valid_until: e.target.value
+                        }
+                    })
+                }} />
 
             <Label htmlFor="is_equipment_required">Is special equipment required?</Label>
             <Select name="is_equipment_required"
-                    id="is_equipment_required"
-                    value={props.state.is_equipment_required || ""}
-                    placeholder="Answer the question.."
-                    onChange={props.changeState}
-                    options={[
-                        { value: true, label: 'Yes' },
-                        { value: false, label: 'No' },
-                ]}/>
+                id="is_equipment_required"
+                value={props.state.is_equipment_required || ""}
+                placeholder="Answer the question.."
+                onChange={props.changeState}
+                options={[
+                    { value: true, label: 'Yes' },
+                    { value: false, label: 'No' },
+                ]} />
         </>
     );
 }
@@ -244,10 +245,10 @@ function Step3(props) {
         return null
     }
 
-    return(
+    return (
         <>
-            <Header step={props.state.step} title="Choose the location"/>
-            <Map state={props.state} setState={props.setState}/>
+            <Header step={props.state.step} title="Choose the location" />
+            <Map state={props.state} setState={props.setState} />
         </>
     );
 }
@@ -258,10 +259,10 @@ function Step4(props) {
         return null
     }
 
-    return(
+    return (
         <>
-            <Header step={props.state.step} title="Payment"/>
-            <TransactionComponent state={props.state} setState={props.setState}/>
+            <Header step={props.state.step} title="Payment" />
+            <TransactionComponent state={props.state} setState={props.setState} />
         </>
     );
 }
@@ -273,22 +274,22 @@ function Step5(props) {
         return null
     }
 
-    return(
+    return (
         <>
-            <Header step={props.state.step} title="Upload an image (optional)"/>
-            <FileUpload state={props.state} setState={props.setState}/>
+            <Header step={props.state.step} title="Upload an image (optional)" />
+            <FileUpload state={props.state} setState={props.setState} />
         </>
     );
 }
 
 // header for each step
 function Header(props) {
-    return(
+    return (
         <header className="px-2 py-2 rounded mb-10 w-full border-b">
             <div className="text-xl">
                 <span className="inline-flex items-center justify-center px-3 py-1 mr-2 font-bold leading-none text-white bg-black rounded">
                     {props.step}
-                </span> 
+                </span>
                 <span className="inline-flex items-center justify-center">{props.title}</span>
             </div>
         </header>
@@ -296,4 +297,3 @@ function Header(props) {
 }
 
 export default NewJob;
-  
