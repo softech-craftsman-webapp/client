@@ -211,7 +211,7 @@ function Step2(props) {
                 placeholder="You need to.."
                 onChange={props.changeState} />
 
-            <Label htmlFor="valid_until">Vali until</Label>
+            <Label htmlFor="valid_until">Valid until</Label>
             <Input type="date"
                 id="valid_until"
                 name="valid_until"
