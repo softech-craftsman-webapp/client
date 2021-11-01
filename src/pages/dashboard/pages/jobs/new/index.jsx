@@ -91,10 +91,9 @@ function NewJob() {
                 <div className="fixed bg-gray-50 bottom-0 border-t w-full px-2 py-3">
                     <div className='grid grid-cols-2'>
                         {/* Left side */}
-                        <div className="flex items-center">
+                        <div className="items-center w-full">
                             {(state.step > 1 && state.step <= 5) &&
                                 <Button
-                                    className="w-auto md:px-10 bg-gray-50 font-semibold text-black"
                                     onClick={() => setState((prev) => {
                                         return {
                                             ...prev,
@@ -108,10 +107,10 @@ function NewJob() {
                         </div>
 
                         {/* Right side */}
-                        <div className="flex items-center">
+                        <div className="items-center w-full">
                             {state.step < 5 &&
                                 <Button
-                                    className="w-auto mr-2 md:px-10 font-semibold shadow-none"
+                                    className="w-auto md:px-10 md:mr-32 shadow-none float-right"
                                     onClick={() => setState((prev) => {
                                         return {
                                             ...prev,
@@ -123,7 +122,7 @@ function NewJob() {
                                 </Button>
                             }
                             {state.step === 5 &&
-                                <Button className={`w-auto mr-8 md:mr-32 px-10 float-right`}
+                                <Button className={`w-auto md:px-10 md:mr-32 float-right`}
                                     onClick={handleSubmission}>
                                     Create Job
                                 </Button>
