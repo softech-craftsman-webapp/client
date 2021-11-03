@@ -10,6 +10,10 @@ import Settings from './pages/settings';
 
 import NewJob from './pages/jobs/new';
 
+import SettingsEmailComponent from './pages/settings/email';
+import SettingsNameComponent from './pages/settings/name';
+import SettingsPasswordComponent from './pages/settings/password';
+
 /**
  * Protected routes
  * @returns {JSX.Element}
@@ -62,8 +66,20 @@ function DashboardApp() {
       </Route>
 
       {/* Settings */}
-      <Route exact path={`${ROOT}/settings`}>
+      <Route exact path={`${ROOT}/settings/`}>
         <Settings/>
+      </Route>
+
+      <Route exact path={`${ROOT}/settings/update-name`}>
+        <SettingsNameComponent/>
+      </Route>
+
+      <Route exact path={`${ROOT}/settings/update-email`}>
+        <SettingsEmailComponent/>
+      </Route>
+
+      <Route exact path={`${ROOT}/settings/update-password`}>
+        <SettingsPasswordComponent/>
       </Route>
     </>
   )

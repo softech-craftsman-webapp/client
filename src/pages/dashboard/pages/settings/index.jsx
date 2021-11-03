@@ -3,10 +3,6 @@ import Button from '../../../../components/Button';
 
 import style from './style.module.css';
 
-import Name from './name';
-import Email from './email';
-import Password from './password';
-
 function Settings() {
   const ROOT = '/dashboard/settings';
   let location = useLocation();
@@ -77,18 +73,6 @@ function Settings() {
           </p>
         </Route>
       }
-
-      <Route path={`${ROOT}/update-password`}>
-        <Password/>
-      </Route>
-
-      <Route path={`${ROOT}/update-name`}>
-        <Name/>
-      </Route>
-
-      <Route path={`${ROOT}/update-email`}>
-        <Email/>
-      </Route>
     </>
   )
 }

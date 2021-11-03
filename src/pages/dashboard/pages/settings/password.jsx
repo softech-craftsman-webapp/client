@@ -8,6 +8,8 @@ import style from './style.module.css';
 function Password() {
     return(
       <>
+        <h1 className="text-3xl font-semibold pb-5">Update Password</h1>
+
         {/* Breadcrumb */}
         <nav className="text-black my-8" aria-label="Breadcrumb">
           <ol className="list-none p-0 inline-flex">
