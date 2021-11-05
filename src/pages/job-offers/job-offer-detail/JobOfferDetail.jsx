@@ -9,7 +9,7 @@ const JobOfferDetail = () => {
         Image: 'https://cdn.motor1.com/images/mgl/Xeg6k/s1/toyota-corolla-executive-16-valvematic-cvt.jpg',            
         // UserID: '83264',            
         IsPremium: false,           
-        // IsEquipmentRequired: false,
+        IsEquipmentRequired: false,
         ValidUntil: '2021-12-12 23:59:59',      
         CreatedAt: '2021-10-12 25:37:13',      
         // CategoryID: '5',
@@ -48,7 +48,7 @@ const JobOfferDetail = () => {
                     <p className="text-sm">Budapest</p>
 
                     <p className="text-sm font-bold mt-4">Equipment required</p>
-                    <p className="text-sm">Yes</p>
+                    <p className="text-sm">{jobOffer.IsEquipmentRequired ? "Yes" : "No"}</p>
 
                     <p className="text-sm font-bold mt-4">Offer valid until</p>
                     <p className="text-sm">{jobOffer.ValidUntil}</p>

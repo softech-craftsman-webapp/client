@@ -12,7 +12,15 @@ const JobOfferEntry = ({ jobOffer }) => {
                     <img alt={jobOffer.name} className="align-middle h-24 w-28" src={jobOffer.Image} style={{objectFit: "cover"}}/>
                 </div>
                 <div className="h-28 float-left" style={{ marginLeft: "20px",  }}>
-                    <h1 className="text-lg font-bold mt-2">{jobOffer.Name}, <span className="text-sm">Budapest</span></h1>
+                    <h1 className="text-lg font-bold mt-2">
+                        {jobOffer.Name}, 
+                        <span className="text-sm">
+                            {" Budapest"}
+                        </span>
+                        <span className="text-xs text-blue-600">
+                            {jobOffer.IsPremium ? " (PREMIUM JOB) " : ""}
+                        </span>
+                    </h1>
                     <p className="text-sm">until {jobOffer.ValidUntil}</p>
                     <p className="text-sm truncate">{jobOffer.Description}</p>
                 </div>

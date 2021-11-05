@@ -1,8 +1,10 @@
 import { Route } from 'react-router-dom';
+
+import JobOfferList from '../job-offers/JobOfferList';
 import JobOfferCreate from '../job-offers/job-offer-create/JobOfferCreate';
 import JobOfferDetail from '../job-offers/job-offer-detail/JobOfferDetail';
 import JobOfferSearch from '../job-offers/job-offer-search/JobOfferSearch';
-import JobOfferList from '../job-offers/JobOfferList';
+
 import Main from './pages/main';
 import Jobs from './pages/jobs';
 import Applications from './pages/applications';
@@ -61,6 +63,7 @@ function DashboardApp() {
         <p>User settings</p>
       </Route>
 
+      {/* JOB OFFERS */}
       <Route path={`${ROOT}/job-offers`}>
         <JobOfferList/>
       </Route>
