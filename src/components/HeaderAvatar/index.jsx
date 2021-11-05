@@ -23,6 +23,7 @@ class HeaderAvatar extends React.Component {
             localStorage.removeItem('token');
             localStorage.removeItem('refresh_token');
             localStorage.removeItem('user_data');
+            localStorage.removeItem('geo_data');
             
             window.location.replace('/auth/sign-in');
         } 

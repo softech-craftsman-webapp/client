@@ -7,13 +7,18 @@ import Header from '../../components/Header';
 // protected routes
 import DasboardApp from './DasboardApp';
 
+/**
+ * Protected Dashboard
+ * @returns {React.Component}
+ */
 function Dashboard(){
     const [isOpen, setOpen] = useState(false);
-    // const userDetails = JSON.parse(localStorage.getItem('user_data') || '');
 
+    /**
+     * Dashboard page
+     */
     return (
         <div className={`${style.init}`}>
-
             {/* Sidebar */}
             <Sidebar isOpen={isOpen} setOpen={setOpen}/>
 
@@ -21,8 +26,8 @@ function Dashboard(){
             <div className={`${style.content_area}`}>
                 {/*  Site header */}    
                 <Header isOpen={isOpen} setOpen={setOpen}/>
-                
-                <main className="container-fluid pt-5 h-screen bg-gray-50">
+
+                <main className="container-fluid pt-5">
                     <DasboardApp/>
                 </main>
             </div>
