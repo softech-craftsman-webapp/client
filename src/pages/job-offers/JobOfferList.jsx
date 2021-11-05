@@ -52,7 +52,7 @@ const JobOfferList = () => {
             <div>
                 <h1 className="text-xl font-bold">List of job offers near Budapest</h1>
                 <NavLink exact to="/dashboard/job-offer-search" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Search other offers</NavLink>
-                <NavLink exact to="/dashboard/job-offer-create" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Create an offer</NavLink>
+                <NavLink exact to="/dashboard/job-offer/new" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Create an offer</NavLink>
             </div>
             {jobOffers.map((jobOffer) => 
                 <>
