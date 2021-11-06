@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import JobOfferEntry from './JobOfferEntry.js';
+import fetcher from '../../helpers/fetcher';
 
 const JobOfferList = () => {
+    const [jobs, setJobs] = React.useState([]);
+
     const dummy = {   
         Name: 'Painting',               
         Description: 'Painting a very big house inside and out. Estimated size of the house: 728 square feet.',    
@@ -47,6 +50,17 @@ const JobOfferList = () => {
     }
     const jobOffers = [dummy3, dummy, dummy2, dummy, dummy2, dummy, dummy2];
 
+    useEffect(() => {
+        fetcher('get', '/jobs/all', null)
+            .then((res) => {
+                console.log(res);
+                setJobs(jobOffers);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, [])
+
     return (
         <>
             <div>
@@ -54,7 +68,7 @@ const JobOfferList = () => {
                 <NavLink exact to="/dashboard/job-offer-search" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Search other offers</NavLink>
                 <NavLink exact to="/dashboard/job-offer/new" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Create an offer</NavLink>
             </div>
-            {jobOffers.map((jobOffer) => 
+            {jobs.map((jobOffer) => 
                 <>
                     <JobOfferEntry jobOffer={jobOffer} />
                 </>
