@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 import moment from 'moment';
-import Map from '../../../../../components/Location/Map';
-import FileUpload from '../../../../../components/FileUpload';
-import TransactionComponent from '../../../../../components/Transaction';
+import Map from '../../../components/Location/Map';
+import FileUpload from '../../../components/FileUpload';
+import TransactionComponent from '../../../components/Transaction';
 
-import Button from '../../../../../components/Button';
-import Label from '../../../../../components/Label';
-import Input from '../../../../../components/Input';
-import Select from '../../../../../components/Select';
+import Button from '../../../components/Button';
+import Label from '../../../components/Label';
+import Input from '../../../components/Input';
+import Select from '../../../components/Select';
 
 import { Redirect } from 'react-router';
 import { createJob, importCategories } from './createJob';
@@ -26,7 +26,7 @@ import { createJob, importCategories } from './createJob';
  * 
  * @returns {JSX.Element}
  */
-function NewJob() {
+function JobOfferCreate() {
     const getGeoDetails = JSON.parse(localStorage.getItem('geo_data') || '');
 
     const [state, setState] = useState({
@@ -297,4 +297,4 @@ function Header(props) {
     );
 }
 
-export default NewJob;
+export default JobOfferCreate;

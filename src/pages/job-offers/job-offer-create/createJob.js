@@ -1,4 +1,4 @@
-import fetcher from "../../../../../helpers/fetcher";
+import fetcher from "../../../helpers/fetcher";
 import toast from "react-hot-toast";
 
 const importCategories = (setState) => { 

@@ -1,14 +1,16 @@
 import { Route } from 'react-router-dom';
 
+import JobOfferList from '../job-offers/JobOfferList';
+import JobOfferCreate from '../job-offers/job-offer-create/JobOfferCreate';
+import JobOfferDetail from '../job-offers/job-offer-detail/JobOfferDetail';
+import JobOfferSearch from '../job-offers/job-offer-search/JobOfferSearch';
+
 import Main from './pages/main';
-import Jobs from './pages/jobs';
 import Applications from './pages/applications';
 import Transactions from './pages/transactions';
 import Ratings from './pages/ratings';
 import UserDetails from './pages/user-details';
 import Settings from './pages/settings';
-
-import NewJob from './pages/jobs/new';
 
 import SettingsEmailComponent from './pages/settings/email';
 import SettingsNameComponent from './pages/settings/name';
@@ -32,17 +34,8 @@ function DashboardApp() {
    */
   return(
     <>
-      <Route exact path={`${ROOT}`}>
+    <Route exact path={`${ROOT}`}>
         <Main/>
-      </Route>
-
-      {/* Jobs */}
-      <Route exact path={`${ROOT}/jobs`}>
-        <Jobs/>
-      </Route>
-      
-      <Route exact path={`${ROOT}/jobs/new`}>
-        <NewJob/>
       </Route>
 
       {/* Applications */}  
@@ -70,6 +63,28 @@ function DashboardApp() {
         <Settings/>
       </Route>
 
+      <Route path={`${ROOT}/settings`}>
+        <p>User settings</p>
+      </Route>
+
+      {/* JOB OFFERS */}
+      <Route path={`${ROOT}/job-offers`}>
+        <JobOfferList/>
+      </Route>
+
+      <Route path={`${ROOT}/job-offer-search`}>
+        <JobOfferSearch/>
+      </Route>
+
+      <Route path={`${ROOT}/job-offer/new`}>
+        <JobOfferCreate/>
+      </Route>
+      
+      <Route path={`${ROOT}/job-offer`}>
+        <JobOfferDetail/>
+      </Route>
+
+      {/* SETTINGS */}
       <Route exact path={`${ROOT}/settings/update-name`}>
         <SettingsNameComponent/>
       </Route>
