@@ -1,10 +1,5 @@
 import { Route } from 'react-router-dom';
 
-import JobOfferList from '../job-offers/JobOfferList';
-import JobOfferCreate from '../job-offers/job-offer-create/JobOfferCreate';
-import JobOfferDetail from '../job-offers/job-offer-detail/JobOfferDetail';
-import JobOfferSearch from '../job-offers/job-offer-search/JobOfferSearch';
-
 import Main from './pages/main';
 import Applications from './pages/applications';
 import Transactions from './pages/transactions';
@@ -15,6 +10,12 @@ import Settings from './pages/settings';
 import SettingsEmailComponent from './pages/settings/email';
 import SettingsNameComponent from './pages/settings/name';
 import SettingsPasswordComponent from './pages/settings/password';
+
+import JobOfferList from './pages/job-offers/JobOfferList';
+import JobOfferCreate from './pages/job-offers/job-offer-create/JobOfferCreate';
+import JobOfferDetail from './pages/job-offers/job-offer-detail/JobOfferDetail';
+import JobOfferSearch from './pages/job-offers/job-offer-search/JobOfferSearch';
+
 
 /**
  * Protected routes
@@ -30,7 +31,7 @@ function DashboardApp() {
    * the DashboardApp.
    * 
    * You have to change the path to match your route path
-   * @ref src\components\Sidebar.tsx
+   * @ref src\components\Sidebar.jsx
    */
   return(
     <>
@@ -58,33 +59,28 @@ function DashboardApp() {
         <UserDetails/>
       </Route>
 
-      {/* Settings */}
-      <Route exact path={`${ROOT}/settings/`}>
-        <Settings/>
-      </Route>
-
-      <Route path={`${ROOT}/settings`}>
-        <p>User settings</p>
-      </Route>
-
       {/* JOB OFFERS */}
-      <Route path={`${ROOT}/job-offers`}>
+      <Route exact path={`${ROOT}/job-offers`}>
         <JobOfferList/>
       </Route>
 
-      <Route path={`${ROOT}/job-offer-search`}>
+      <Route exact path={`${ROOT}/job-offer-search`}>
         <JobOfferSearch/>
       </Route>
 
-      <Route path={`${ROOT}/job-offer/new`}>
+      <Route exact path={`${ROOT}/job-offer/new`}>
         <JobOfferCreate/>
       </Route>
       
-      <Route path={`${ROOT}/job-offer`}>
+      <Route exact path={`${ROOT}/job-offer`}>
         <JobOfferDetail/>
       </Route>
 
       {/* SETTINGS */}
+      <Route exact path={`${ROOT}/settings`}>
+        <Settings/>
+      </Route>
+
       <Route exact path={`${ROOT}/settings/update-name`}>
         <SettingsNameComponent/>
       </Route>
