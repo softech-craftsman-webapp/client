@@ -64,7 +64,7 @@ const JobOfferList = () => {
     return (
         <>
             <div>
-                <h1 className="text-xl font-bold">List of job offers near Budapest</h1>
+                <h1 className="text-xl font-bold">List of job offers near you</h1>
                 <NavLink exact to="/dashboard/job-offer-search" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Search other offers</NavLink>
                 <NavLink exact to="/dashboard/job-offer/new" className="inline-block rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4">Create an offer</NavLink>
             </div>
@@ -73,6 +73,9 @@ const JobOfferList = () => {
                     <JobOfferEntry jobOffer={jobOffer} />
                 </>
             )}
+            {jobs.length === 0 && 
+                <p style={{marginTop: "25vh", textAlign: "center"}}>There are no job offers to show.</p>
+            }
         </>
     );
 };
