@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import A from '../../../../components/A'
 import Input from './../../../../components/Input';
@@ -22,7 +22,7 @@ function Email() {
   const [state, setState] = useState({
     email: '',
     password: '',
-    id:  '',
+    id: '',
   });
 
   useEffect(() => {
@@ -41,24 +41,24 @@ function Email() {
       password: state.password,
     };
 
-    fetcher("post", `/users/${state.id}/update-email`, data)
-    .then((res) => {
-      // success
-      if (res.data.success) {
-        toast.success("You have updated email successfully.");
-        history.push(`/auth/sign-in`);
-      }
-      // not succeed
-      else {
-        toast.error(res.data.message || "There is an error on this request");
-      }
-    })
-    // client error
-    .catch((error) => {
-      error.response
-        ? toast.error(error.response.data.message)
-        : toast.error(error.message);
-    });
+    fetcher("put", `/users/${state.id}/update-email`, data)
+      .then((res) => {
+        // success
+        if (res.data.success) {
+          toast.success("You have updated email successfully.");
+          history.push(`/auth/sign-in`);
+        }
+        // not succeed
+        else {
+          toast.error(res.data.message || "There is an error on this request");
+        }
+      })
+      // client error
+      .catch((error) => {
+        error.response
+          ? toast.error(error.response.data.message)
+          : toast.error(error.message);
+      });
   }
 
   return (
@@ -105,7 +105,7 @@ function Email() {
                   email: e.target.value
                 }
               })
-            }}/> 
+            }} />
         </div>
 
         <div className={`${style.space}`}>
@@ -123,7 +123,7 @@ function Email() {
                   password: e.target.value
                 }
               })
-            }}/>
+            }} />
         </div>
 
         <div className={`${style.space}`}>

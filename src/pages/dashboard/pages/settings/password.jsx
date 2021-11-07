@@ -21,7 +21,7 @@ function Password() {
   const [state, setState] = useState({
     old_password: '',
     password: '',
-    id:  '',
+    id: '',
   });
 
   const handleSubmission = (e) => {
@@ -32,24 +32,24 @@ function Password() {
       password: state.password,
     };
 
-    fetcher("post", `/users/${state.id}/update-password`, data)
-    .then((res) => {
-      // success
-      if (res.data.success) {
-        toast.success("You have updated password successfully.");
-        history.push(`/auth/sign-in`);
-      }
-      // not succeed
-      else {
-        toast.error(res.data.message || "There is an error on this request");
-      }
-    })
-    // client error
-    .catch((error) => {
-      error.response
-        ? toast.error(error.response.data.message)
-        : toast.error(error.message);
-    });
+    fetcher("put", `/users/${state.id}/update-password`, data)
+      .then((res) => {
+        // success
+        if (res.data.success) {
+          toast.success("You have updated password successfully.");
+          history.push(`/auth/sign-in`);
+        }
+        // not succeed
+        else {
+          toast.error(res.data.message || "There is an error on this request");
+        }
+      })
+      // client error
+      .catch((error) => {
+        error.response
+          ? toast.error(error.response.data.message)
+          : toast.error(error.message);
+      });
   }
 
   return (
@@ -96,7 +96,7 @@ function Password() {
                   password: e.target.value
                 }
               })
-            }}/>
+            }} />
         </div>
 
         <div className={`${style.space}`}>
@@ -114,13 +114,13 @@ function Password() {
                   old_password: e.target.value
                 }
               })
-            }}/>
+            }} />
         </div>
 
         <div className={`${style.space}`}>
           <Button type="submit"
-                  onClick={handleSubmission}
-                  className="w-auto">
+            onClick={handleSubmission}
+            className="w-auto">
             Update your password
           </Button>
         </div>
