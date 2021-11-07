@@ -22,7 +22,7 @@ class JobOffers extends React.Component {
                         return (
                             <Link to={`/dashboard/job-offers/${item.id}`}
                                 className="flex flex-col"
-                                index={index}
+                                key={index}
                                 id={`job-id-${index}`}>
                                 <div style={{ backgroundImage: `url("${item.image}")` }} 
                                      className="w-full border border-l-0 rounded-lg bg-blend-lighten h-32 bg-cover bg-no-repeat bg-center">

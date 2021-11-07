@@ -96,17 +96,17 @@ const JobOffers = () => {
 
                 <div className="w-100">
                     <div className="md:float-right">
-                        <Link to="/dashboard/created-job-offers"
+                        <Link to="/dashboard/job-offers/action/filter-created"
                             className="mr-2 hover:shadow-sm bg-gray-100 border px-3 py-2 rounded-md text-sm font-medium">
                             Created jobs
                         </Link>
 
-                        <Link to="/dashboard/applied-job-offers"
+                        <Link to="/dashboard/job-offers/action/filter-applied"
                             className="mr-2 hover:shadow-sm bg-gray-100 border px-3 py-2 rounded-md text-sm font-medium">
                             Applied jobs
                         </Link>
 
-                        <Link to="/dashboard/create-job-offers"
+                        <Link to="/dashboard/job-offers/action/new"
                             className="mr-2 hover:shadow-sm bg-gray-100 border px-3 py-2 rounded-md text-sm font-medium">
                             Offer a job
                         </Link>

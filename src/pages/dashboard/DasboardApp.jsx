@@ -17,6 +17,9 @@ import JobOfferDetail from './pages/job-offers/job-offer-detail';
 import CreatedJobOffers from './pages/job-offers/created-job-offers';
 import AppliedJobOffers from './pages/job-offers/applied-job-offers';
 
+import ApplicationCreate from './pages/job-offers/application-create';
+import ApplicationDetail from './pages/applications/application-detail';
+
 /**
  * Protected routes
  * @returns {JSX.Element}
@@ -42,7 +45,12 @@ function DashboardApp() {
       {/* Applications */}  
       <Route exact path={`${ROOT}/applications`}>
         <Applications/>
-      </Route>      
+      </Route>     
+
+      {/* id => application id */}
+      <Route exact path={`${ROOT}/applications/:id`}>
+        <ApplicationDetail/>
+      </Route>  
 
       {/* Transactions */}
       <Route exact path={`${ROOT}/transactions`}>
@@ -64,18 +72,24 @@ function DashboardApp() {
         <JobOfferList/>
       </Route>
 
-      <Route exact path={`${ROOT}/create-job-offers`}>
+      <Route exact path={`${ROOT}/job-offers/action/new`}>
         <JobOfferCreate/>
       </Route>
 
-      <Route exact path={`${ROOT}/created-job-offers`}>
+      <Route exact path={`${ROOT}/job-offers/action/filter-created`}>
         <CreatedJobOffers/>
       </Route>
 
-      <Route exact path={`${ROOT}/applied-job-offers`}>
+      {/* id => job id */}
+      <Route exact path={`${ROOT}/job-offers/:id/apply`}>
+        <ApplicationCreate/>
+      </Route>
+
+      <Route exact path={`${ROOT}/job-offers/action/filter-applied`}>
         <AppliedJobOffers/>
       </Route>
       
+      {/* id => job id */}
       <Route exact path={`${ROOT}/job-offers/:id`}>
         <JobOfferDetail/>
       </Route>
