@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-import { Redirect, useHistory } from 'react-router-dom';
-
 import Label from '../../../../../components/Label';
 import Input from '../../../../../components/Input';
 import Button from '../../../../../components/Button';
 
-import toast from 'react-hot-toast';
 import fetcher from '../../../../../helpers/fetcher';
+import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 /**
  * Welcome page
@@ -72,12 +71,9 @@ function UserDetailsCreate() {
 
   return (
     <>
-      {state.user_details.id && (
-        <Redirect to="/dashboard/user-details" />
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 pb-5 items-center">
-        <h1 className="text-3xl font-semibold pb-4">Hello, {userDetails.name}</h1>
+      <div className="pb-8 items-center">
+        <h1 className="text-3xl font-semibold">Hello, {userDetails.name}</h1>
+        <p className="text-medium">We need additional information from you</p>
       </div>
 
       <section id="user_details">

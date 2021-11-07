@@ -63,7 +63,9 @@ function Email() {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold pb-5">Update Email address</h1>
+      <div className="pb-5 items-center">
+        <h1 className="text-3xl font-semibold pb-4">Update Email address</h1>
+      </div>
 
       {/* Breadcrumb */}
       <nav className="text-black my-8" aria-label="Breadcrumb">

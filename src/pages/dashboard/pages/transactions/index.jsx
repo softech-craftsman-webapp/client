@@ -28,7 +28,7 @@ function Transactions() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 pb-5 items-center">
+      <div className="pb-5 items-center">
         <h1 className="text-3xl font-semibold pb-4">My transactions</h1>
       </div>
 

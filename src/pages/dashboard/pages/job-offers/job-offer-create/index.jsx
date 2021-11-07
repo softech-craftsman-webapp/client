@@ -76,7 +76,9 @@ function JobOfferCreate() {
 
             <div className='min-h-screen'>
                 {/* Title */}
-                <h1 className="text-3xl font-semibold pb-10">Create New Job</h1>
+                <div className="pb-5 items-center">
+                    <h1 className="text-3xl font-semibold pb-4">Create new job</h1>
+                </div>
 
                 {/* Steps */}
                 <div className="pb-24">

@@ -68,13 +68,13 @@ function ApplicationDetail() {
   };
 
   const rateApplication = () => {
-    const opponent_id = (state.job.user_id === userDetails.id) 
-                        ? 
-                        // if the user is the job owner
-                        state.contract.professional_id 
-                        : 
-                        // if the user is the job seeker
-                        state.contract.recruiter_id;
+    const opponent_id = (state.job.user_id === userDetails.id)
+      ?
+      // if the user is the job owner
+      state.contract.professional_id
+      :
+      // if the user is the job seeker
+      state.contract.recruiter_id;
     const data = {
       comment: state.comment,
       contract_id: id,
@@ -207,7 +207,7 @@ function ApplicationDetail() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 pb-5 items-center">
+      <div className="pb-5 items-center">
         <h1 className="text-3xl font-semibold pb-4">Application</h1>
       </div>
 
@@ -410,73 +410,73 @@ function ApplicationDetail() {
         </section>
 
         {
-          (moment(state.contract.signed_by_professional_time).valueOf() 
-          - 
-          moment(state.contract.signed_by_recruiter_time).valueOf() > 0) ?
-          // If the contract is not signed by both parties
-          <section id="actions"
-                    className="py-3">
-            { state.job.user_id === userDetails.id &&
-              state.contract.recruiter_id === userDetails.id &&
-              <Button onClick={signApplication}
-                      className="w-auto">
-                Sign application
-              </Button>
-            }
-            { state.contract.professional_id === userDetails.id && 
-              <Button onClick={deleteApplication}
-                      className="w-auto">
-                Delete application
-              </Button>
-            }
-          </section>
-          : 
-          // If the contract is signed by both parties
-          <section id="rating"
-                   className="w-full border-t py-4">
+          (moment(state.contract.signed_by_professional_time).valueOf()
+            -
+            moment(state.contract.signed_by_recruiter_time).valueOf() > 0) ?
+            // If the contract is not signed by both parties
+            <section id="actions"
+              className="py-3">
+              {state.job.user_id === userDetails.id &&
+                state.contract.recruiter_id === userDetails.id &&
+                <Button onClick={signApplication}
+                  className="w-auto">
+                  Sign application
+                </Button>
+              }
+              {state.contract.professional_id === userDetails.id &&
+                <Button onClick={deleteApplication}
+                  className="w-auto">
+                  Delete application
+                </Button>
+              }
+            </section>
+            :
+            // If the contract is signed by both parties
+            <section id="rating"
+              className="w-full border-t py-4">
               <p className="text-xl font-semibold">
                 Rating
               </p>
 
               <Label htmlFor="points">Points</Label>
               <Input type="number"
-                    id="points"
-                    min="1"
-                    max="5"
-                    name="points"
-                    autoComplete="off"
-                    placeholder="5.0"
-                    value={state.points || ""}
-                    onChange={(e) => {
-                      setState((prev) => {
-                        return {
-                          ...prev,
-                          points: e.target.value
-                        }
-                      })
-                    }} />
+                id="points"
+                min="1"
+                max="5"
+                name="points"
+                autoComplete="off"
+                placeholder="5.0"
+                value={state.points || ""}
+                onChange={(e) => {
+                  setState((prev) => {
+                    return {
+                      ...prev,
+                      points: e.target.value
+                    }
+                  })
+                }} />
 
               <Label htmlFor="comment">Comment</Label>
               <Input type="text"
-                    id="comment"
-                    name="comment"
-                    autoComplete="off"
-                    placeholder="Comment"
-                    value={state.comment || ""}
-                    onChange={(e) => {
-                      setState((prev) => {
-                        return {
-                          ...prev,
-                          comment: e.target.value
-                        }
-                      })
-                    }} />
+                id="comment"
+                name="comment"
+                autoComplete="off"
+                placeholder="Comment"
+                value={state.comment || ""}
+                onChange={(e) => {
+                  setState((prev) => {
+                    return {
+                      ...prev,
+                      comment: e.target.value
+                    }
+                  })
+                }} />
 
-            <Button onClick={rateApplication}
-                  className="w-auto mt-2 px-6">
-              Rate
-            </Button>
-          </section>
+              <Button onClick={rateApplication}
+                className="w-auto mt-2 px-6">
+                Rate
+              </Button>
+            </section>
         }
       </div>
     </>

@@ -54,7 +54,9 @@ function Password() {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold pb-5">Update Password</h1>
+      <div className="pb-5 items-center">
+        <h1 className="text-3xl font-semibold pb-4">Update password</h1>
+      </div>
 
       {/* Breadcrumb */}
       <nav className="text-black my-8" aria-label="Breadcrumb">

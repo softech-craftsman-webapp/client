@@ -37,8 +37,10 @@ function Settings() {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold pb-5">Settings</h1>
-  
+      <div className="pb-5 items-center">
+        <h1 className="text-3xl font-semibold pb-4">Settings</h1>
+      </div>  
+      
       { location.pathname === ROOT &&
         <Route path={`${ROOT}`}>
           { userDetails.email_verified_at == null &&

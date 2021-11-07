@@ -31,7 +31,9 @@ function Main() {
   return (
     <>
       { state.welcome_init ? <Redirect to="/dashboard/user-details/welcome" /> : null }
-      <h1 className="text-3xl font-semibold pb-5">Dashboard</h1>
+      <div className="pb-5 items-center">
+        <h1 className="text-3xl font-semibold pb-4">Dashboard</h1>
+      </div>    
     </>
   )
 }
