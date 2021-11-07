@@ -279,7 +279,7 @@ const JobDetails = () => {
                                 <h4 className="text-xl font-semibold border-b mb-5 px-2 py-2">
                                     Applications
                                 </h4>
-                                <div className="py-2 mt-2">
+                                <div>
                                     {(state.contracts.length > 0 && state.contracts) ? (
                                         <ContractsComponent data={state.contracts} />
                                     ): (
@@ -294,7 +294,11 @@ const JobDetails = () => {
                         <div className="fixed bg-gray-50 bottom-0 border-t w-full px-2 py-3">
                             {
                                 userDetails.id !== state.job.user_id ? (
-                                    <Button className="w-auto px-8 float-right mr-48">Apply now</Button>
+                                    <Link to={`/dashboard/job-offers/${id}/apply`}> 
+                                        <Button className="w-auto px-8 float-right mr-48">
+                                            Apply now
+                                        </Button>
+                                    </Link>
                                 ) : (
                                     <div className="mr-48">
                                         <Button className="w-auto px-8 float-right mr-2"

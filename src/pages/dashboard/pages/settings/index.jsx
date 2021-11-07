@@ -3,22 +3,52 @@ import Button from '../../../../components/Button';
 
 import style from './style.module.css';
 
+import fetcher from '../../../../helpers/fetcher';
+import toast from 'react-hot-toast';
+
+/**
+ * Settings page
+ * @returns {JSX.Element}
+ */
 function Settings() {
   const ROOT = '/dashboard/settings';
   let location = useLocation();
   const userDetails = JSON.parse(localStorage.getItem('user_data') || '');
 
+  const sendVerificationEmail = () => {
+    fetcher("post", `/auth/email-resend`)
+    .then((res) => {
+      // success
+      if (res.data.success) {
+        toast.success("New verfiication letter sent successfully.");
+      }
+      // not succeed
+      else {
+        toast.error(res.data.message || "There is an error on this request");
+      }
+    })
+    // client error
+    .catch((error) => {
+      error.response
+        ? toast.error(error.response.data.message)
+        : toast.error(error.message);
+    });
+  };
+
   return (
     <>
-      <h1 className="text-3xl font-semibold pb-5">Settings</h1>
-  
+      <div className="pb-5 items-center">
+        <h1 className="text-3xl font-semibold pb-4">Settings</h1>
+      </div>  
+      
       { location.pathname === ROOT &&
         <Route path={`${ROOT}`}>
           { userDetails.email_verified_at == null &&
             <div className={`${style.email_verfication}`}>
               <p className="text-center md:text-left px-4">You have not verified your email address.</p>
               <div>
-                <Button className="w-full md:w-48 md:float-right">
+                <Button onClick={sendVerificationEmail}
+                        className="w-full md:w-48 md:float-right">
                   Send Verification
                 </Button>
               </div>

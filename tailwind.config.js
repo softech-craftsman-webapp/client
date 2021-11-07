@@ -23,7 +23,6 @@ module.exports = {
     require('@tailwindcss/custom-forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/line-clamp'),
-    require('daisyui'),
+    require('@tailwindcss/line-clamp')
   ],
 }
