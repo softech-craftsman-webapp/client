@@ -87,7 +87,7 @@ class Sidebar extends React.Component {
             <li className={`${style.link_container}`}>
               <NavLink exact 
                        to="/dashboard/job-offers" 
-                       className={`${style.link_nav} ${window.location.pathname.includes('/jobs') ? 'border-gray-600 bg-gray-800' : ''}`} 
+                       className={`${style.link_nav} ${window.location.pathname.includes('/job-offers') ? 'border-gray-600 bg-gray-800' : ''}`} 
                        title="Jobs">
                 <div className="flex items-center justify-between">
                   <div className="flex flex-grow">

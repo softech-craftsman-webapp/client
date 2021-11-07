@@ -11,11 +11,11 @@ import SettingsEmailComponent from './pages/settings/email';
 import SettingsNameComponent from './pages/settings/name';
 import SettingsPasswordComponent from './pages/settings/password';
 
-import JobOfferList from './pages/job-offers/JobOfferList';
-import JobOfferCreate from './pages/job-offers/job-offer-create/JobOfferCreate';
-import JobOfferDetail from './pages/job-offers/job-offer-detail/JobOfferDetail';
-import JobOfferSearch from './pages/job-offers/job-offer-search/JobOfferSearch';
-
+import JobOfferList from './pages/job-offers';
+import JobOfferCreate from './pages/job-offers/job-offer-create';
+import JobOfferDetail from './pages/job-offers/job-offer-detail';
+import CreatedJobOffers from './pages/job-offers/created-job-offers';
+import AppliedJobOffers from './pages/job-offers/applied-job-offers';
 
 /**
  * Protected routes
@@ -64,15 +64,19 @@ function DashboardApp() {
         <JobOfferList/>
       </Route>
 
-      <Route exact path={`${ROOT}/job-offer-search`}>
-        <JobOfferSearch/>
-      </Route>
-
-      <Route exact path={`${ROOT}/job-offer/new`}>
+      <Route exact path={`${ROOT}/create-job-offers`}>
         <JobOfferCreate/>
       </Route>
+
+      <Route exact path={`${ROOT}/created-job-offers`}>
+        <CreatedJobOffers/>
+      </Route>
+
+      <Route exact path={`${ROOT}/applied-job-offers`}>
+        <AppliedJobOffers/>
+      </Route>
       
-      <Route exact path={`${ROOT}/job-offer`}>
+      <Route exact path={`${ROOT}/job-offers/:id`}>
         <JobOfferDetail/>
       </Route>
 
