@@ -86,8 +86,8 @@ class Sidebar extends React.Component {
             {/* Orders */}
             <li className={`${style.link_container}`}>
               <NavLink exact 
-                       to="/dashboard/jobs" 
-                       className={`${style.link_nav} ${window.location.pathname.includes('/jobs') ? 'border-gray-600 bg-gray-800' : ''}`} 
+                       to="/dashboard/job-offers" 
+                       className={`${style.link_nav} ${window.location.pathname.includes('/job-offers') ? 'border-gray-600 bg-gray-800' : ''}`} 
                        title="Jobs">
                 <div className="flex items-center justify-between">
                   <div className="flex flex-grow">
@@ -99,8 +99,8 @@ class Sidebar extends React.Component {
                     <span className={`${style.text} ${this.state.onlyIcons ? '' : 'hidden'}`}>Jobs</span>
                   </div>
                 </div>
-              </NavLink>
-            </li>
+                </NavLink>
+              </li>
 
             {/* Applications */}
             <li className={`${style.link_container}`}>

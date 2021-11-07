@@ -57,4 +57,5 @@ const createJob = (data, setState) => {
         (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
       });
 };
+
 export { importCategories, createJob };

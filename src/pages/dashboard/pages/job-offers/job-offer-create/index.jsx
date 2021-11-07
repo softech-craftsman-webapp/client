@@ -26,7 +26,7 @@ import { createJob, importCategories } from './createJob';
  * 
  * @returns {JSX.Element}
  */
-function NewJob() {
+function JobOfferCreate() {
     const getGeoDetails = JSON.parse(localStorage.getItem('geo_data') || '');
 
     const [state, setState] = useState({
@@ -60,7 +60,7 @@ function NewJob() {
         createJob({
             latitude: state.latitude,
             longitude: state.longitude,
-            file_url: state.file_url,
+            image: state.file_url,
             transaction_id: state.transaction_id,
             category_id: state.category_id,
             is_equipment_required: Boolean(state.is_equipment_required),
@@ -72,7 +72,7 @@ function NewJob() {
 
     return (
         <>
-            {(state.success) ? <Redirect to={{ pathname: "/dashboard/jobs" }} /> : ''}
+            {(state.success) ? <Redirect to={{ pathname: "/dashboard/job-offers" }} /> : ''}
 
             <div className='min-h-screen'>
                 {/* Title */}
@@ -297,4 +297,4 @@ function Header(props) {
     );
 }
 
-export default NewJob;
+export default JobOfferCreate;
