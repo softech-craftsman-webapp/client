@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import A from '../../../../components/A'
 import Input from './../../../../components/Input';
@@ -16,6 +16,7 @@ import { useHistory } from 'react-router-dom';
  * @returns {JSX.Element}
  */
 function Password() {
+  const userDetails = JSON.parse(localStorage.getItem('user_data') || '');
   const history = useHistory();
 
   const [state, setState] = useState({
@@ -23,6 +24,13 @@ function Password() {
     password: '',
     id: '',
   });
+  
+  useEffect(() => {
+    setState(prev => ({
+      ...prev,
+      id: userDetails.id,
+    }));
+  }, [userDetails.id]);
 
   const handleSubmission = (e) => {
     e.preventDefault();
