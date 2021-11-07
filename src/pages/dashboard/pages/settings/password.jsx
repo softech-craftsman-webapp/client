@@ -11,6 +11,10 @@ import fetcher from '../../../../helpers/fetcher';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
 
+/**
+ * Change password page
+ * @returns {JSX.Element}
+ */
 function Password() {
   const history = useHistory();
 

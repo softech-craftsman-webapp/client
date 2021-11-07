@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import fetcher from '../../../../helpers/fetcher';
-// import toast from 'react-hot-toast';
 
+/**
+ * Transactions page
+ * @returns {JSX.Element}
+ */
 function Transactions() {
   const [state, setState] = useState({
       transactions: [],

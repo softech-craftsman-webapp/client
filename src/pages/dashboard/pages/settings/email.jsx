@@ -11,6 +11,10 @@ import fetcher from '../../../../helpers/fetcher';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
 
+/**
+ * Change email page
+ * @returns {JSX.Element}
+ */
 function Email() {
   const userDetails = JSON.parse(localStorage.getItem('user_data') || '');
   const history = useHistory();

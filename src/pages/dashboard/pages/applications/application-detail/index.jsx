@@ -11,6 +11,10 @@ import { useHistory, useParams } from 'react-router-dom';
 import fetcher from "../../../../../helpers/fetcher";
 import toast from 'react-hot-toast';
 
+/**
+ * Application details page
+ * @returns {JSX.Element}
+ */
 function ApplicationDetail() {
   let { id } = useParams();
   let history = useHistory();

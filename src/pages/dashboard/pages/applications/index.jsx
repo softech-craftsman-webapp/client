@@ -3,6 +3,10 @@ import fetcher from '../../../../helpers/fetcher';
 
 import Contracts from './../../../../components/Contracts';
 
+/**
+ * Applications page
+ * @returns {JSX.Element}
+ */
 function Applications() {
   const [state, setState] = useState({
     applications: []

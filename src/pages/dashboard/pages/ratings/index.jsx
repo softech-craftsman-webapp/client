@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import fetcher from '../../../../helpers/fetcher';
-// import toast from 'react-hot-toast';
 
+/**
+ * Ratings page
+ * @returns {JSX.Element}
+ */
 function Ratings() {
   const [state, setState] = useState({
     ratings: [],
@@ -22,7 +25,6 @@ function Ratings() {
           }
       });
   }, []);
-
 
   return (
     <>

@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import Input from '../../../../components/Input'
-import Button from '../../../../components/Button'
-import Label from '../../../../components/Label'
+import { Redirect, useHistory } from 'react-router-dom';
 
-import fetcher from '../../../../helpers/fetcher';
+import Label from '../../../../../components/Label';
+import Input from '../../../../../components/Input';
+import Button from '../../../../../components/Button';
+
 import toast from 'react-hot-toast';
-import { useHistory } from 'react-router-dom';
+import fetcher from '../../../../../helpers/fetcher';
 
 /**
- * User details page
+ * Welcome page
  * @returns {JSX.Element}
  */
-function UserDetails() {
+function UserDetailsCreate() {
   const userDetails = JSON.parse(localStorage.getItem('user_data') || '');
   const geoDetails = JSON.parse(localStorage.getItem('geo_data') || '');
   const history = useHistory();
@@ -25,32 +26,6 @@ function UserDetails() {
     email: userDetails.email,
     user_details: {}
   });
-
-  useEffect(() => {
-    fetcher('get', `/user-details/my`)
-      .then((res) => {
-        // success
-        if (res.data.success) {
-          setState(state => ({
-            ...state,
-            user_details: res.data.user_details,
-            bio: res.data.payload.bio,
-            email: res.data.payload.email,
-            telephone: res.data.payload.telephone
-          }));
-        } else {
-          history.push('/dashboard/user-details/welcome');
-        }
-      })
-      // client error
-      .catch((error) => {
-        error.response
-          ? toast.error(error.response.data.message)
-          : toast.error(error.message);
-
-        history.push('/dashboard/user-details/welcome');
-      });
-  }, [history]);
 
   const changeState = (e) => {
     const target = e.target;
@@ -76,11 +51,11 @@ function UserDetails() {
       email: state.email
     }
 
-    fetcher('put', `/user-details/${userDetails.id}`, data)
+    fetcher('post', `/user-details/new`, data)
       .then((res) => {
         // success
         if (res.data.success) {
-          history.push('/dashboard')
+          history.push('/dashboard/user-details')
         }
         // not succeed
         else {
@@ -97,8 +72,12 @@ function UserDetails() {
 
   return (
     <>
+      {state.user_details.id && (
+        <Redirect to="/dashboard/user-details" />
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 pb-5 items-center">
-        <h1 className="text-3xl font-semibold pb-4">My contacts information</h1>
+        <h1 className="text-3xl font-semibold pb-4">Hello, {userDetails.name}</h1>
       </div>
 
       <section id="user_details">
@@ -131,11 +110,11 @@ function UserDetails() {
 
         <Button className="w-auto px-6 mt-2"
           onClick={handleSubmission}>
-          Update information
+          Join now
         </Button>
       </section>
     </>
   )
 }
 
-export default UserDetails;  
+export default UserDetailsCreate;  

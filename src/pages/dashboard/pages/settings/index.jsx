@@ -6,6 +6,10 @@ import style from './style.module.css';
 import fetcher from '../../../../helpers/fetcher';
 import toast from 'react-hot-toast';
 
+/**
+ * Settings page
+ * @returns {JSX.Element}
+ */
 function Settings() {
   const ROOT = '/dashboard/settings';
   let location = useLocation();

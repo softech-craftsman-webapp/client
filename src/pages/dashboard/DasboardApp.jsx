@@ -1,12 +1,12 @@
 import { Route } from 'react-router-dom';
 
 import Main from './pages/main';
-import Applications from './pages/applications';
-import Transactions from './pages/transactions';
-import Ratings from './pages/ratings';
-import UserDetails from './pages/user-details';
-import Settings from './pages/settings';
 
+import Transactions from './pages/transactions';
+
+import Ratings from './pages/ratings';
+
+import Settings from './pages/settings';
 import SettingsEmailComponent from './pages/settings/email';
 import SettingsNameComponent from './pages/settings/name';
 import SettingsPasswordComponent from './pages/settings/password';
@@ -17,8 +17,12 @@ import JobOfferDetail from './pages/job-offers/job-offer-detail';
 import CreatedJobOffers from './pages/job-offers/created-job-offers';
 import AppliedJobOffers from './pages/job-offers/applied-job-offers';
 
+import Applications from './pages/applications';
 import ApplicationCreate from './pages/job-offers/application-create';
 import ApplicationDetail from './pages/applications/application-detail';
+
+import UserDetails from './pages/user-details';
+import UserDetailsCreate from './pages/user-details/user-details-create';
 
 /**
  * Protected routes
@@ -65,6 +69,10 @@ function DashboardApp() {
       {/* User Details */}
       <Route exact path={`${ROOT}/user-details`}>
         <UserDetails/>
+      </Route>
+
+      <Route exact path={`${ROOT}/user-details/welcome`}>
+        <UserDetailsCreate/>
       </Route>
 
       {/* JOB OFFERS */}
