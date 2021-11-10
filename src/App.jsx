@@ -9,7 +9,7 @@ import AuthChangePassword from './pages/auth/change-password';
 import Verify from './pages/auth/verify';
 import ProtectedRoute from './helpers/ProtectedRoute';
 import TransactionCreate from './pages/transaction/transaction-create';
-import TransactionDetails from './pages/transaction/transaction-details';
+import TransactionDetail from './pages/transaction/transaction-details';
 import TransactionList from './pages/transaction/transaction-list';
 /**
  * Main app component
@@ -54,7 +54,7 @@ function App() {
         </Route>  
 
         <Route exact path="/transaction/transaction-details">
-          <TransactionDetails/>
+          <TransactionDetail/>
         </Route>  
         <Route exact path="/transaction/transaction-list">
           <TransactionList/>
