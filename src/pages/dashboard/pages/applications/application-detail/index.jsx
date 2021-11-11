@@ -4,6 +4,8 @@ import Button from "../../../../../components/Button";
 import Input from "../../../../../components/Input";
 import Label from "../../../../../components/Label";
 import ContractComponent from "./../../job-offers/application-create/ContractComponent";
+import ReactStars from "react-rating-stars-component";
+import A from "../../../../../components/A";
 
 import moment from 'moment';
 import { useHistory, useParams } from 'react-router-dom';
@@ -26,9 +28,16 @@ function ApplicationDetail() {
     comment: "",
     points: 0,
     recruiter_rating: {},
-    professional_rating: {}
+    professional_rating: {},
+    ratings: {
+      is_rating_finished: true,
+    },
+    isUserRated: false
   });
 
+  /**
+   * Delete Application
+   */
   const deleteApplication = () => {
     fetcher('delete', `/contracts/${id}`)
       .then((res) => {
@@ -48,13 +57,16 @@ function ApplicationDetail() {
       });
   };
 
+  /**
+   * Sign Application
+   */
   const signApplication = () => {
     fetcher('post', `/contracts/${id}/sign`)
       .then((res) => {
         // success
         if (res.data.success) {
           toast.success("Application Signed");
-          history.push('/dashboard/applications');
+          history.push(`/dashboard/job-offers/${state.job.id}`);
         }
         // not succeed
         else {
@@ -67,6 +79,9 @@ function ApplicationDetail() {
       });
   };
 
+  /**
+   * Rate Application
+   */
   const rateApplication = () => {
     const opponent_id = (state.job.user_id === userDetails.id)
       ?
@@ -87,7 +102,7 @@ function ApplicationDetail() {
         // success
         if (res.data.success) {
           toast.success("User rated");
-          history.push('/dashboard/applications');
+          history.push(`/dashboard/job-offers/${state.job.id}`);
         }
         // not succeed
         else {
@@ -100,6 +115,7 @@ function ApplicationDetail() {
       });
   };
 
+  // load contract
   useEffect(() => {
     fetcher("get", `/contracts/${id}`)
       .then((res) => {
@@ -124,6 +140,7 @@ function ApplicationDetail() {
   }, [id]);
 
 
+  // load job
   useEffect(() => {
     if (!state.contract.job_id) {
       return;
@@ -151,6 +168,7 @@ function ApplicationDetail() {
       });
   }, [state.contract.job_id]);
 
+  // load user details of recruiter
   useEffect(() => {
     if (!state.contract.recruiter_id) {
       return;
@@ -178,6 +196,7 @@ function ApplicationDetail() {
       });
   }, [state.contract.recruiter_id]);
 
+  // load user details of professional
   useEffect(() => {
     if (!state.contract.professional_id) {
       return;
@@ -204,6 +223,45 @@ function ApplicationDetail() {
           : toast.error(error.message);
       });
   }, [state.contract.professional_id]);
+
+  // load ratings
+  useEffect(() => {
+    if (!id && userDetails.id) {
+      return;
+    }
+
+    fetcher("get", `/contracts/${id}/ratings`)
+      .then((res) => {
+        // success
+        if (res.data.success) {
+          setState(state => ({
+            ...state,
+            ratings: res.data.payload,
+          }));
+          
+          if(res.data.payload.rating_items != null && res.data.payload.rating_items.length > 0) {
+            res.data.payload.rating_items.forEach(rating => {
+              if(rating.submitted_by_id === userDetails.id) {
+                setState(state => ({
+                  ...state,
+                  isUserRated: true,
+                }));
+              }
+            });
+          }
+        }
+        // not succeed
+        else {
+          toast.error(res.data.message || "There is an error on this request");
+        }
+      })
+      // client error
+      .catch((error) => {
+        error.response
+          ? toast.error(error.response.data.message)
+          : toast.error(error.message);
+      });
+  }, [id, userDetails.id]);
 
   return (
     <>
@@ -341,7 +399,7 @@ function ApplicationDetail() {
                 Start Time
               </p>
               <p className="col-span-2">
-                {moment(state.contract.start_time).format('LL')}
+                {moment(state.contract.start_time).format('LLLL')}
               </p>
             </div>
             <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -349,7 +407,7 @@ function ApplicationDetail() {
                 End Time
               </p>
               <p className="col-span-2">
-                {moment(state.contract.end_time).format('LL')}
+                {moment(state.contract.end_time).format('LLLL')}
               </p>
             </div>
             <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -357,7 +415,9 @@ function ApplicationDetail() {
                 User ID
               </p>
               <p className="col-span-2">
-                {state.contract.professional_id}
+                <A to={`/dashboard/user-details/${state.contract.professional_id}?=contract_id=${id}`}>
+                  {state.contract.professional_id}
+                </A>
               </p>
             </div>
             <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -365,7 +425,7 @@ function ApplicationDetail() {
                 User Rating
               </p>
               <p className="col-span-2">
-                {state.professional_rating.rating}  from {state.professional_rating.total_rates} applications
+                {(state.professional_rating.rating || 0).toFixed(2)} points from {state.professional_rating.total_rates} applications
               </p>
             </div>
             <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -373,7 +433,9 @@ function ApplicationDetail() {
                 Recruiter ID
               </p>
               <p className="col-span-2">
-                {state.contract.recruiter_id}
+                <A to={`/dashboard/user-details/${state.contract.recruiter_id}?=contract_id=${id}`}>
+                  {state.contract.recruiter_id}
+                </A>
               </p>
             </div>
             <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -381,7 +443,7 @@ function ApplicationDetail() {
                 Recruiter Rating
               </p>
               <p className="col-span-2">
-                {state.recruiter_rating.rating} points from {state.recruiter_rating.total_rates} applications
+                {(state.recruiter_rating.rating || 0).toFixed(2)} points from {state.recruiter_rating.total_rates} applications
               </p>
             </div>
             <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -394,7 +456,7 @@ function ApplicationDetail() {
                   moment(state.contract.signed_by_recruiter_time).valueOf()
                 ) > 0 ?
                   'Pending' :
-                  moment(state.contract.signed_by_recruiter_time).format('LL')
+                  moment(state.contract.signed_by_recruiter_time).format('LLLL')
                 }
               </p>
             </div>
@@ -403,7 +465,7 @@ function ApplicationDetail() {
                 Signed by User
               </p>
               <p className="col-span-2">
-                {moment(state.contract.signed_by_professional_time).format('LL')}
+                {moment(state.contract.signed_by_professional_time).format('LLLL')}
               </p>
             </div>
           </div>
@@ -432,51 +494,96 @@ function ApplicationDetail() {
             </section>
             :
             // If the contract is signed by both parties
-            <section id="rating"
-              className="w-full border-t py-4">
-              <p className="text-xl font-semibold">
-                Rating
-              </p>
+            (
+              <>
+                <section id="rating"
+                  className="w-full border-t py-4">
+                  <p className="text-xl font-semibold pb-5">
+                    Ratings
+                  </p>
 
-              <Label htmlFor="points">Points</Label>
-              <Input type="number"
-                id="points"
-                min="1"
-                max="5"
-                name="points"
-                autoComplete="off"
-                placeholder="5.0"
-                value={state.points || ""}
-                onChange={(e) => {
-                  setState((prev) => {
-                    return {
-                      ...prev,
-                      points: e.target.value
+                  { (state.ratings.rating_items && state.ratings.rating_items.length > 0) ?
+                    (
+                      <div className="grid grid-cols-1 gap-5">
+                        {state.ratings.rating_items.map((rating, index) => (
+                          <div className="w-100" key={index}>
+                            <div className="bg-gray-100 rounded border py-2 px-2">
+                              <p className="text-normal w-100 text-medium leading-snug md:leading-normal">
+                                {rating.comment}
+                              </p>
+                              
+                              <p className="text-normal w-100 text-xs text-gray-400 mt-3">
+                                {(rating.points).toFixed(2)} points from {
+                                  rating.submitted_by_id === userDetails.id ? 
+                                  'You' : 
+                                  state.ratings.professional_id === userDetails.id ? 'Recruiter' : 'User'
+                                }
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )
+
+                    : 
+                    <p className="text-xl text-center font-semibold">
+                      No ratings yet
+                    </p>
+                  }
+
+                  <div id="rate-actions" className="mt-5">
+                    { (state.ratings.is_rating_finished !== true && state.isUserRated === false) 
+                      &&
+                      <>
+                        <div class="py-2">
+                          <Label htmlFor="points">Points</Label>
+                          <ReactStars
+                            count={5}
+                            isHalf={false}
+                            emptyIcon={<i className="im im-star"></i>}
+                            halfIcon={<i className="im im-star-half"></i>}
+                            fullIcon={<i className="im im-star"></i>}
+                            onChange={(newPoints) => {
+                              setState((prev) => {
+                                return {
+                                  ...prev,
+                                  points: newPoints
+                                }
+                              })
+                            }}
+                            size={24}
+                            activeColor="#ffd700"
+                          />
+                        </div>
+                        
+                        <div class="py-2">
+                          <Label htmlFor="comment">Comment</Label>
+                          <Input type="text"
+                            id="comment"
+                            name="comment"
+                            autoComplete="off"
+                            placeholder="Comment"
+                            value={state.comment || ""}
+                            onChange={(e) => {
+                              setState((prev) => {
+                                return {
+                                  ...prev,
+                                  comment: e.target.value
+                                }
+                              })
+                            }} />
+                        </div>
+                        
+                        <Button onClick={rateApplication}
+                          className="w-auto mt-2 px-6">
+                          Rate
+                        </Button>
+                      </>
                     }
-                  })
-                }} />
-
-              <Label htmlFor="comment">Comment</Label>
-              <Input type="text"
-                id="comment"
-                name="comment"
-                autoComplete="off"
-                placeholder="Comment"
-                value={state.comment || ""}
-                onChange={(e) => {
-                  setState((prev) => {
-                    return {
-                      ...prev,
-                      comment: e.target.value
-                    }
-                  })
-                }} />
-
-              <Button onClick={rateApplication}
-                className="w-auto mt-2 px-6">
-                Rate
-              </Button>
-            </section>
+                  </div>
+                </section>
+              </>
+            )
         }
       </div>
     </>

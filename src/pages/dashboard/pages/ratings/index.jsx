@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import fetcher from '../../../../helpers/fetcher';
+import A from '../../../../components/A';
 
 /**
  * Ratings page
@@ -37,7 +38,7 @@ function Ratings() {
           <thead>
             <tr>
               <th className="px-6 bg-gray-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                Contract ID  
+                Application ID  
               </th>
               <th className="px-6 bg-gray-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                 Comment
@@ -53,7 +54,7 @@ function Ratings() {
                 return(
                   <tr key={index}>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-gray-700 ">
-                      { item.contract_id }
+                      <A to={`/dashboard/applications/${item.contract_id}`}>{ item.contract_id }</A>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
                       { item.comment }
