@@ -30,6 +30,7 @@ function AuthChangePassword() {
 
     useEffect(() => {
         changePasswordCheck(state, setState);
+        // eslint-disable-next-line
     }, [state.email, state.password])
 
     const changeState = (e) => {

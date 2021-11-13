@@ -26,6 +26,7 @@ function Register() {
 
     useEffect(() => {
         registerCheck(state, setState);
+        // eslint-disable-next-line
     }, [state.email, state.name, state.password])
 
     const changeState = (e) => {

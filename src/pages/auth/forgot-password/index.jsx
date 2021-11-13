@@ -24,6 +24,7 @@ function ForgotPassword() {
 
     useEffect(() => {
         forgotPasswordCheck(state, setState);
+        // eslint-disable-next-line
     }, [state.email])
 
     const changeState = (e) => {

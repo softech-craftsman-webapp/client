@@ -29,6 +29,7 @@ function Verify(){
 
     useEffect(() => {
         verifyActionCheck(state, setState);
+        // eslint-disable-next-line
     }, [state.email])
 
     const changeState = (e) => {
