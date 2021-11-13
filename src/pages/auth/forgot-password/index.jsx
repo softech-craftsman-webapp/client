@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import style from './style.module.css';
 
@@ -22,6 +22,10 @@ function ForgotPassword() {
         success: false
     });
 
+    useEffect(() => {
+        forgotPasswordCheck(state, setState);
+    }, [state.email])
+
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -33,8 +37,6 @@ function ForgotPassword() {
             [name]: value
           }
         });
-
-        forgotPasswordCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import style from './style.module.css';
 
@@ -24,6 +24,10 @@ function Register() {
         success: false
     });
 
+    useEffect(() => {
+        registerCheck(state, setState);
+    }, [state.email, state.name, state.password])
+
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -35,8 +39,6 @@ function Register() {
             [name]: value
           }
         });
-
-        registerCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  

@@ -61,7 +61,7 @@ const registerCheck = (state, setState) => {
 
   if ((typeof email !== 'undefined' && email && email != null)
     &&
-    (typeof password !== 'undefined' && password && password != null)
+    (typeof password !== 'undefined' && password && password != null && password.length >= 8)
     &&
     (typeof name !== 'undefined' && name && name != null)
     &&

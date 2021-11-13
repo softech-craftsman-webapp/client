@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import style from './style.module.css';
 
@@ -27,6 +27,10 @@ function Verify(){
         success: false
     });
 
+    useEffect(() => {
+        verifyActionCheck(state, setState);
+    }, [state.email])
+
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -38,8 +42,6 @@ function Verify(){
             [name]: value
           }
         });
-
-        verifyActionCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import style from './style.module.css';
 
@@ -28,6 +28,10 @@ function AuthChangePassword() {
         success: false
     });
 
+    useEffect(() => {
+        changePasswordCheck(state, setState);
+    }, [state.email, state.password])
+
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -39,8 +43,6 @@ function AuthChangePassword() {
             [name]: value
           }
         });
-
-        changePasswordCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  
