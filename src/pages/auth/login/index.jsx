@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import style from './style.module.css';
 
@@ -23,6 +23,10 @@ function Login () {
         success: false
     });
 
+    useEffect(() => {
+        loginCheck(state, setState);
+    }, [state.email, state.password])
+    
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -34,8 +38,6 @@ function Login () {
             [name]: value
           }
         });
-
-        loginCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  
@@ -76,7 +78,9 @@ function Login () {
                            name="email"
                            autoComplete="off"
                            placeholder="john.doe@example.com"
-                           onChange={changeState}/>
+                           onChange={changeState}
+                           value={state.email}
+                    />
                 </div>
 
                 <div className={`${style.space} pb-5`}>
@@ -86,7 +90,9 @@ function Login () {
                            name="password"
                            autoComplete="off"
                            placeholder="* * * *"
-                           onChange={changeState}/>
+                           onChange={changeState}
+                           value={state.password}
+                    />
                     <div className="float-right text-sm">
                         <A to="/auth/forgot-password">Forgot password?</A>
                     </div>
