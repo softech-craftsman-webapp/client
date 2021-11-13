@@ -415,7 +415,7 @@ function ApplicationDetail() {
                 User ID
               </p>
               <p className="col-span-2">
-                <A to={`/dashboard/user-details/${state.contract.professional_id}?=contract_id=${id}`}>
+                <A to={`/dashboard/user-details/${state.contract.professional_id}/reveal?contract_id=${id}`}>
                   {state.contract.professional_id}
                 </A>
               </p>
@@ -433,7 +433,7 @@ function ApplicationDetail() {
                 Recruiter ID
               </p>
               <p className="col-span-2">
-                <A to={`/dashboard/user-details/${state.contract.recruiter_id}?=contract_id=${id}`}>
+                <A to={`/dashboard/user-details/${state.contract.recruiter_id}/reveal?contract_id=${id}`}>
                   {state.contract.recruiter_id}
                 </A>
               </p>

@@ -73,7 +73,7 @@ function UserDetailsCreate() {
     <>
       <div className="pb-8 items-center">
         <h1 className="text-3xl font-semibold">Hello, {userDetails.name}</h1>
-        <p className="text-medium">We need additional information from you</p>
+        <p className="text-medium">We need an additional information from you</p>
       </div>
 
       <section id="user_details">
