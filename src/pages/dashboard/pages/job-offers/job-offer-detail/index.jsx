@@ -306,7 +306,7 @@ const JobDetails = () => {
                                             Delete
                                         </Button>
                                         <Link to={`/dashboard/job-offers/${id}/edit`}> 
-                                            <Button className="w-auto px-8 float-right bg-white text-black shadow-none hover:bg-white hover:text-black">
+                                            <Button className="w-auto px-8 float-right bg-transparent text-black shadow-none hover:text-black hover:bg-gray-50 ">
                                                 Edit
                                             </Button>
                                         </Link>

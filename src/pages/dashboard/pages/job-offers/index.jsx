@@ -123,6 +123,7 @@ const JobOffers = () => {
                     <div className="w-full mr-2 ml-2">
                         <Input type="text"
                                name="name"
+                               className="border-gray-50"
                                onChange={changeState} 
                                placeholder="Search" />
                     </div>
