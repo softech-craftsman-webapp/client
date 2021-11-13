@@ -6,7 +6,7 @@ import Label from '../../../../components/Label'
 
 import fetcher from '../../../../helpers/fetcher';
 import toast from 'react-hot-toast';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 /**
  * User details page
@@ -23,8 +23,29 @@ function UserDetails() {
     latitude: geoDetails.latitude || 0,
     longitude: geoDetails.longitude || 0,
     email: userDetails.email,
-    user_details: {}
+    user_details: {},
+    welcome_init: false,
   });
+
+  useEffect(() => {
+    fetcher('get', `/user-details/my`)
+      .then((res) => {
+        // success
+        if (!res.data.success) {
+          setState(state => ({
+            ...state,
+            welcome_init: true,
+          }));
+        }
+      })
+      // client error
+      .catch((error) => {
+        setState(state => ({
+          ...state,
+          welcome_init: true,
+        }));
+      });
+  }, []);
 
   useEffect(() => {
     fetcher('get', `/user-details/my`)
@@ -97,6 +118,8 @@ function UserDetails() {
 
   return (
     <>
+     { state.welcome_init ? <Redirect to="/dashboard/user-details/welcome" /> : null }
+
       <div className="pb-5 items-center">
         <h1 className="text-3xl font-semibold pb-4">My contact information</h1>
       </div>
