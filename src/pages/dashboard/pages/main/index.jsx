@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import fetcher from '../../../../helpers/fetcher';
 import JobOffers from '../../../../components/JobOffers';
 
-import toast from 'react-hot-toast';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
@@ -47,14 +46,8 @@ function Main() {
             ...state,
             category: res.data.payload,
           }));
-        } else {
-          toast.error(res.data.message);
         }
       })
-      // client error
-      .catch((error) => { 
-        (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
-      });
   }, []);
 
   useEffect(() => {
@@ -66,14 +59,8 @@ function Main() {
             ...state,
             job: res.data.payload,
           }));
-        } else {
-          toast.error(res.data.message);
         }
       })
-      // client error
-      .catch((error) => {
-        (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
-      });
   }, []);
 
   useEffect(() => {
@@ -85,14 +72,8 @@ function Main() {
             ...state,
             rating: res.data.payload,
           }));
-        } else {
-          toast.error(res.data.message);
         }
       })
-      // client error
-      .catch((error) => {
-        (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
-      });
   }, []);
 
   useEffect(() => {
@@ -104,14 +85,8 @@ function Main() {
             ...state,
             transaction: res.data.payload,
           }));
-        } else {
-          toast.error(res.data.message);
         }
       })
-      // client error
-      .catch((error) => {
-        (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
-      });
   }, []);
 
   return (
@@ -216,23 +191,21 @@ function Main() {
           <div className="w-full">
             <div className="rounded">
               <div className="text-sm mt-2">
-                <div className="px-2 py-1 rounded mt-1 border-b">
-                  {state.transaction.latest_transaction.amount !== undefined ?
-                    `The user #${state.transaction.latest_transaction.user_id} has just made a transaction 
-                      of ${state.transaction.latest_transaction.amount} ${state.transaction.latest_transaction.currency}`
-                    :
-                    `No transaction yet`
-                  }
-                </div>
-                <div className="px-2 py-1 rounded mt-1 border-b">
-                  {state.rating.latest_rating.points !== undefined ?
-                    (<Link to={`/dashboard/applications/${state.rating.latest_rating.contract_id}`}>
+                { state.transaction.latest_transaction.amount > 0 && (
+                  <div className="px-2 py-1 rounded mt-1 border-b">
+                    <Link to={`/dashboard/transactions`}>
+                      You have transfered {state.transaction.latest_transaction.amount} {state.transaction.latest_transaction.currency}
+                    </Link>
+                  </div>
+                )}
+                
+                { state.rating.latest_rating.points > 0 && (
+                  <div className="px-2 py-1 rounded mt-1 border-b">
+                    <Link to={`/dashboard/applications/${state.rating.latest_rating.contract_id}`}>
                       The user #{state.rating.latest_rating.submitted_by_id} has rated you with {state.rating.latest_rating.points.toFixed(2)} points and left a comment: "{state.rating.latest_rating.comment}"
-                    </Link>)
-                    :
-                    `No rating yet`
-                  }
-                </div>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

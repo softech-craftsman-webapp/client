@@ -23,6 +23,7 @@ import ApplicationDetail from './pages/applications/application-detail';
 
 import UserDetails from './pages/user-details';
 import UserDetailsCreate from './pages/user-details/user-details-create';
+import RevealUserDetails from './pages/user-details/reveal'
 
 /**
  * Protected routes
@@ -74,6 +75,10 @@ function DashboardApp() {
       <Route exact path={`${ROOT}/user-details/welcome`}>
         <UserDetailsCreate/>
       </Route>
+
+      <Route exact path={`${ROOT}/user-details/:id/reveal`}>
+        <RevealUserDetails/>
+      </Route>    
 
       {/* JOB OFFERS */}
       <Route exact path={`${ROOT}/job-offers`}>

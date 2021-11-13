@@ -31,26 +31,6 @@ function UserDetails() {
     fetcher('get', `/user-details/my`)
       .then((res) => {
         // success
-        if (!res.data.success) {
-          setState(state => ({
-            ...state,
-            welcome_init: true,
-          }));
-        }
-      })
-      // client error
-      .catch((error) => {
-        setState(state => ({
-          ...state,
-          welcome_init: true,
-        }));
-      });
-  }, []);
-
-  useEffect(() => {
-    fetcher('get', `/user-details/my`)
-      .then((res) => {
-        // success
         if (res.data.success) {
           setState(state => ({
             ...state,
@@ -60,7 +40,10 @@ function UserDetails() {
             telephone: res.data.payload.telephone
           }));
         } else {
-          history.push('/dashboard/user-details/welcome');
+          setState(state => ({
+            ...state,
+            welcome_init: true,
+          }));
         }
       })
       // client error
@@ -69,9 +52,12 @@ function UserDetails() {
           ? toast.error(error.response.data.message)
           : toast.error(error.message);
 
-        history.push('/dashboard/user-details/welcome');
+        setState(state => ({
+          ...state,
+          welcome_init: true,
+        }));
       });
-  }, [history]);
+  }, []);
 
   const changeState = (e) => {
     const target = e.target;
@@ -97,7 +83,7 @@ function UserDetails() {
       email: state.email
     }
 
-    fetcher('put', `/user-details/${userDetails.id}`, data)
+    fetcher('put', `/user-details/edit`, data)
       .then((res) => {
         // success
         if (res.data.success) {
@@ -118,7 +104,7 @@ function UserDetails() {
 
   return (
     <>
-     { state.welcome_init ? <Redirect to="/dashboard/user-details/welcome" /> : null }
+      {state.welcome_init ? <Redirect to="/dashboard/user-details/welcome" /> : null}
 
       <div className="pb-5 items-center">
         <h1 className="text-3xl font-semibold pb-4">My contact information</h1>
