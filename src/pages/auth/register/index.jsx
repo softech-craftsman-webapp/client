@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import style from './style.module.css';
 
@@ -24,6 +24,11 @@ function Register() {
         success: false
     });
 
+    useEffect(() => {
+        registerCheck(state, setState);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state.email, state.name, state.password])
+
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -35,8 +40,6 @@ function Register() {
             [name]: value
           }
         });
-
-        registerCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  
@@ -99,6 +102,7 @@ function Register() {
                            autoComplete="off"
                            placeholder="* * * *"
                            onChange={changeState}/>
+                    <p className="text-xs">Password should be at least 8 characters</p>
                 </div>
 
                 <div className={`${style.space}`}>

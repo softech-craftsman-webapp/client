@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import style from './style.module.css';
 
@@ -28,6 +28,11 @@ function AuthChangePassword() {
         success: false
     });
 
+    useEffect(() => {
+        changePasswordCheck(state, setState);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state.email, state.password])
+
     const changeState = (e) => {
         const target = e.target;
         const value  = target.type === 'checkbox' ? target.checked : target.value;
@@ -39,8 +44,6 @@ function AuthChangePassword() {
             [name]: value
           }
         });
-
-        changePasswordCheck(state, setState);
     }
 
     const handleSubmit = (e) => {  
@@ -95,6 +98,7 @@ function AuthChangePassword() {
                            autoComplete="off"
                            placeholder="* * * *"
                            onChange={changeState}/>
+                    <p className="text-xs">Password should be at least 8 characters</p>
                 </div>
 
                 <div className={`${style.space}`}>

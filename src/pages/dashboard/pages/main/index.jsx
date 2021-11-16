@@ -112,7 +112,11 @@ function Main() {
                 </div>
               </div>
               <p className="text-xs py-2 text-gray-600">
-                {moment(state.category.time, "YYYY-MM-DD hh:mm:ss").fromNow()}
+                { 
+                  (state.category.time !== "0001-01-01 00:00:00") ? 
+                  moment(state.category.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
+                  "No Category"
+                } 
               </p>
             </div>
 
@@ -131,7 +135,11 @@ function Main() {
                 </div>
               </div>
               <p className="text-xs py-2 text-gray-600">
-                {moment(state.job.time, "YYYY-MM-DD hh:mm:ss").fromNow()}
+                { 
+                  (state.job.time !== "0001-01-01 00:00:00") ? 
+                  moment(state.job.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
+                  "No Job"
+                } 
               </p>
             </div>
 
@@ -150,14 +158,18 @@ function Main() {
                 </div>
               </div>
               <p className="text-xs py-2 text-gray-600">
-                {moment(state.transaction.time, "YYYY-MM-DD hh:mm:ss").fromNow()}
+                { 
+                  (state.transaction.time !== "0001-01-01 00:00:00") ? 
+                  moment(state.transaction.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
+                  "No Transaction"
+                }
               </p>
             </div>
 
             <div className="col-span-1 py-2">
               <div className="bg-gray-700 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-black text-white font-medium group">
                 <div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-                  <i className="im im-credit-card stroke-current text-black transform transition-transform duration-500 ease-in-out"></i>
+                  <i className="im im-star-half stroke-current text-black transform transition-transform duration-500 ease-in-out"></i>
                 </div>
                 <div className="text-right">
                   <p className="text-xl truncate">
@@ -169,7 +181,11 @@ function Main() {
                 </div>
               </div>
               <p className="text-xs py-2 text-gray-600">
-                {moment(state.rating.time, "YYYY-MM-DD hh:mm:ss").fromNow()}
+                { 
+                  (state.rating.time !== "0001-01-01 00:00:00") ? 
+                  moment(state.rating.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
+                  "No Rating"
+                }              
               </p>
             </div>
 

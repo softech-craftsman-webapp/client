@@ -227,14 +227,14 @@ const JobDetails = () => {
                                     </p>
 
                                     <ul className="text-sm py-2">
-                                        <li className="py-4 flex items-center p-2 h-12">
+                                        <li className="py-4 flex items-center p-2 h-12 w-64">
                                             <i className="im im-location"></i>
                                             <span className="ml-2">
                                                 { state.address || 'Address not found' }
                                             </span>
                                         </li>
 
-                                        <li className="py-4 flex items-center p-2">
+                                        <li className="py-4 flex items-center p-2 w-64">
                                             <i className="im im-credit-card"></i>
                                             <span className="ml-2">
                                                 { `${state.transaction.amount} ${state.transaction.currency}` || 'Transaction not found' }
