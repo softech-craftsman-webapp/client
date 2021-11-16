@@ -25,8 +25,8 @@ function Login () {
 
     useEffect(() => {
         loginCheck(state, setState);
-        // eslint-disable-next-line
-    }, [state.email, state.password])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state.email, state.password]);
     
     const changeState = (e) => {
         const target = e.target;

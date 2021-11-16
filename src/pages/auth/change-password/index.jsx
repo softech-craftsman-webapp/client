@@ -30,7 +30,7 @@ function AuthChangePassword() {
 
     useEffect(() => {
         changePasswordCheck(state, setState);
-        // eslint-disable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.email, state.password])
 
     const changeState = (e) => {
@@ -98,6 +98,7 @@ function AuthChangePassword() {
                            autoComplete="off"
                            placeholder="* * * *"
                            onChange={changeState}/>
+                    <p className="text-xs">Password should be at least 8 characters</p>
                 </div>
 
                 <div className={`${style.space}`}>

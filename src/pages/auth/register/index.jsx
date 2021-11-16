@@ -26,7 +26,7 @@ function Register() {
 
     useEffect(() => {
         registerCheck(state, setState);
-        // eslint-disable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.email, state.name, state.password])
 
     const changeState = (e) => {
@@ -102,6 +102,7 @@ function Register() {
                            autoComplete="off"
                            placeholder="* * * *"
                            onChange={changeState}/>
+                    <p className="text-xs">Password should be at least 8 characters</p>
                 </div>
 
                 <div className={`${style.space}`}>
