@@ -157,7 +157,7 @@ class Sidebar extends React.Component {
               <NavLink exact 
                        to="/dashboard/user-details" 
                        className={`${style.link_nav} ${window.location.pathname.includes('/user-details') ? 'border-gray-600 bg-gray-800' : ''}`} 
-                       title="Ratings">                
+                       title="User details">                
                 <div className="flex flex-grow">
                   <svg className={`flex-shrink-0 h-6 w-6 mr-3 ${this.state.onlyIcons ? '' : 'mx-auto'}`} viewBox="0 0 24 24">
                     <path className={`fill-current text-gray-900`} d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z" />
