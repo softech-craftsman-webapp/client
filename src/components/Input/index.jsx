@@ -25,6 +25,7 @@ class Input extends React.Component {
                 autoFocus={this.props.autoFocus}
                 checked={this.props.checked}
                 disabled={this.props.disabled}
+                format={this.props.format}
                 form={this.props.form}
                 formAction={this.props.formAction}
                 formMethod={this.props.formMethod}
