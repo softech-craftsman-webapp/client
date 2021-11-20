@@ -14,6 +14,7 @@ import SettingsPasswordComponent from './pages/settings/password';
 import JobOfferList from './pages/job-offers';
 import JobOfferCreate from './pages/job-offers/job-offer-create';
 import JobOfferDetail from './pages/job-offers/job-offer-detail';
+import JobOfferEdit from './pages/job-offers/job-offer-edit';
 import CreatedJobOffers from './pages/job-offers/created-job-offers';
 import AppliedJobOffers from './pages/job-offers/applied-job-offers';
 
@@ -105,6 +106,10 @@ function DashboardApp() {
       {/* id => job id */}
       <Route exact path={`${ROOT}/job-offers/:id`}>
         <JobOfferDetail/>
+      </Route>
+
+      <Route exact path={`${ROOT}/job-offers/:id/edit`}>
+        <JobOfferEdit/>
       </Route>
 
       {/* SETTINGS */}
