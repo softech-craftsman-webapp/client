@@ -77,10 +77,10 @@ class HeaderAvatar extends React.Component {
                             <Link to="/dashboard/job-offers/action/filter-created" className={`${style.dropdown_item}`}>
                                 Created jobs
                             </Link>
-                            <Link to="/dashboard/job-offers/action/filter-created" className={`${style.dropdown_item}`}>
+                            <Link to="/dashboard/job-offers/action/filter-applied" className={`${style.dropdown_item}`}>
                                 Applied jobs
                             </Link>
-                            <Link to="/dashboard/job-offers/action/filter-created" className={`${style.dropdown_item}`}>
+                            <Link to="/dashboard/job-offers/action/new" className={`${style.dropdown_item}`}>
                                 Create a new job offer
                             </Link>
                         </div>

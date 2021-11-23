@@ -8,6 +8,7 @@ import ForgotPassword from './pages/auth/forgot-password';
 import AuthChangePassword from './pages/auth/change-password';
 import Verify from './pages/auth/verify';
 import ProtectedRoute from './helpers/ProtectedRoute';
+import Error404 from './Error404';
 
 /**
  * Main app component
@@ -45,7 +46,7 @@ function App() {
         <ProtectedRoute path="/dashboard" component={Dashboard}/>
       
         <Route path="*">
-          <p>Error 404 - Not found</p>
+          <Error404/>
         </Route>
       </Switch>
     </Router>
