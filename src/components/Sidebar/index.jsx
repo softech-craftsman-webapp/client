@@ -17,10 +17,20 @@ class Sidebar extends React.Component {
         onlyIcons: false,
       };
   }
+  
+  componentDidMount() {
+    this.setState({
+      onlyIcons: localStorage.getItem('sidebarIsOpen') === 'true',
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem('sidebarIsOpen', this.state.onlyIcons);
+  }
 
   render() {    
     return(
-      <div className={`${(this.state.onlyIcons) ? 'lg:w-64' : 'lg:w-24'}`}>
+      <div id="sidebarContainer" className={`${(this.state.onlyIcons) ? 'lg:w-64' : 'lg:w-24'}`}>
 
       {/* Sidebar backdrop (mobile only) */}
       <div className={`${style.sidebar} ${this.props.isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} 

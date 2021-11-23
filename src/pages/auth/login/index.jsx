@@ -8,8 +8,10 @@ import Label from '../../../components/Label';
 import Button from '../../../components/Button';
 import A from '../../../components/A';
 import { loginAuth, loginCheck } from './loginAuth';
-import { Redirect } from 'react-router';
+import { Redirect, useLocation } from 'react-router';
 import logo from './../../../assets/logo.png'
+
+const useQuery = () => new URLSearchParams(useLocation().search);
 
 /**
  * Login page
@@ -17,6 +19,15 @@ import logo from './../../../assets/logo.png'
  */
 function Login () {
     let userDetails = {}
+    let query = useQuery();
+    let redirectPath = query.get('redirect');
+
+    if (redirectPath === '') {
+        redirectPath = null;
+    }
+
+    const redirect = redirectPath || "/dashboard";
+
     if(localStorage.getItem('user_data') !== null){
         userDetails = JSON.parse(localStorage.getItem('user_data') || '');
     }
@@ -58,7 +69,7 @@ function Login () {
     return (
         <CenterFrame>
             { userDetails.email !== undefined && userDetails.email !== '' && <Redirect to='/dashboard' /> }
-            { (state.success) ? <Redirect to = {{ pathname: "/dashboard" }} /> : ''}
+            { (state.success) ? <Redirect to = {{ pathname: redirect }} /> : ''}
 
             <div className="grid justify-items-center">
                 <A to="/">

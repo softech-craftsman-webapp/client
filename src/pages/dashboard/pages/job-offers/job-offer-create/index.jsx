@@ -41,6 +41,7 @@ function JobOfferCreate() {
         success: false,
     });
 
+
     const changeState = (e) => {
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -90,30 +91,13 @@ function JobOfferCreate() {
                 </div>
 
                 {/* Actions panel on bottom */}
-                <div className="fixed bg-gray-50 bottom-0 border-t w-full px-2 py-3">
-                    <div className='grid grid-cols-2'>
+                <div className="fixed bottom-0 w-full border-t bg-gray-50 pt-2">
+                    <div className="inline-flex px-2">
                         {/* Left side */}
-                        <div className="items-center w-full">
-                            {(state.step > 1 && state.step <= 5) &&
-                                <Button
-                                    className="w-auto md:px-10 float-left hover:text-black text-black bg-gray-50 hover:bg-white font-semibold shadow-none"
-                                    onClick={() => setState((prev) => {
-                                        return {
-                                            ...prev,
-                                            step: prev.step - 1
-                                        }
-                                    })}
-                                > 
-                                  Back
-                                </Button>
-                            }
-                        </div>
-
-                        {/* Right side */}
-                        <div className="items-center w-full">
+                        <div className={`w-auto items-center pb-2 ${state.step > 1 && state.step <= 5 && "mr-5"}`}>
                             {state.step < 5 &&
                                 <Button
-                                    className="w-auto md:px-10 md:mr-32 float-right"
+                                    className="w-auto md:px-10"
                                     onClick={() => setState((prev) => {
                                         return {
                                             ...prev,
@@ -125,10 +109,27 @@ function JobOfferCreate() {
                                 </Button>
                             }
                             {state.step === 5 &&
-                                <Button 
-                                    className="w-auto md:px-10 md:mr-32 float-right"
+                                <Button
+                                    className="w-auto md:px-10"
                                     onClick={handleSubmission}>
                                     Create Job
+                                </Button>
+                            }
+                        </div>
+
+                        {/* Right side */}
+                        <div className={`w-auto items-center pb-2`}>
+                            {(state.step > 1 && state.step <= 5) &&
+                                <Button
+                                    className="w-auto md:px-10 bg-gray-200 border border-black text-black font-semibold shadow-xl"
+                                    onClick={() => setState((prev) => {
+                                        return {
+                                            ...prev,
+                                            step: prev.step - 1
+                                        }
+                                    })}
+                                >
+                                    Previous
                                 </Button>
                             }
                         </div>

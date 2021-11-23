@@ -227,14 +227,14 @@ const JobDetails = () => {
                                     </p>
 
                                     <ul className="text-sm py-2">
-                                        <li className="py-4 flex items-center p-2 h-12 w-64">
+                                        <li className="py-4 flex items-center p-2 h-12 w-auto">
                                             <i className="im im-location"></i>
                                             <span className="ml-2">
                                                 { state.address || 'Address not found' }
                                             </span>
                                         </li>
 
-                                        <li className="py-4 flex items-center p-2 w-64">
+                                        <li className="py-4 flex items-center p-2 w-auto">
                                             <i className="im im-credit-card"></i>
                                             <span className="ml-2">
                                                 { `${state.transaction.amount} ${state.transaction.currency}` || 'Transaction not found' }
@@ -294,19 +294,23 @@ const JobDetails = () => {
                         <div className="fixed bg-gray-50 bottom-0 border-t w-full px-2 py-3">
                             {
                                 userDetails.id !== state.job.user_id ? (
-                                    <Link to={`/dashboard/job-offers/${id}/apply`}> 
-                                        <Button className="w-auto px-8 float-right mr-48">
-                                            Apply now
-                                        </Button>
-                                    </Link>
+                                    <>
+                                        { state.job.is_contract_signed && state.job.is_contract_signed !== true && (
+                                            <Link to={`/dashboard/job-offers/${id}/apply`}> 
+                                                <Button className="w-auto px-8 mr-48">
+                                                    Apply now
+                                                </Button>
+                                            </Link>
+                                        )}
+                                    </>
                                 ) : (
                                     <div className="mr-48">
-                                        <Button className="w-auto px-8 float-right mr-2"
+                                        <Button className="w-auto px-8 mr-2"
                                                 onClick={deleteJob}>
                                             Delete
                                         </Button>
                                         <Link to={`/dashboard/job-offers/${id}/edit`}> 
-                                            <Button className="w-auto px-8 float-right bg-transparent text-black shadow-none hover:text-black hover:bg-gray-50 ">
+                                            <Button className="w-auto px-8 md:px-10 bg-gray-200 border border-black text-black font-semibold shadow-xl">
                                                 Edit
                                             </Button>
                                         </Link>
