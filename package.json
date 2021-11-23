@@ -13,6 +13,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
+    "axios-auth-refresh": "^3.2.1",
     "browser-fingerprint": "^0.1.0",
     "craco-image-optimizer-plugin": "^0.0.4",
     "history": "^5.0.0",
@@ -25,8 +26,8 @@
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-transition-group": "^4.4.2",
     "sass": "^1.35.2",
-    "swr": "^0.5.6",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "validator": "^13.6.0",
     "web-vitals": "^1.0.1"

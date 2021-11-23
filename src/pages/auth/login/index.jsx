@@ -16,6 +16,11 @@ import logo from './../../../assets/logo.png'
  * @returns {JSX.Element}
  */
 function Login () {
+    let userDetails = {}
+    if(localStorage.getItem('user_data') !== null){
+        userDetails = JSON.parse(localStorage.getItem('user_data') || '');
+    }
+
     const [state, setState] = useState({
         isOkay: false,
         email : '',
@@ -52,6 +57,7 @@ function Login () {
 
     return (
         <CenterFrame>
+            { userDetails.email !== undefined && userDetails.email !== '' && <Redirect to='/dashboard' /> }
             { (state.success) ? <Redirect to = {{ pathname: "/dashboard" }} /> : ''}
 
             <div className="grid justify-items-center">
