@@ -13,6 +13,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
+    "axios-auth-refresh": "^3.2.1",
     "browser-fingerprint": "^0.1.0",
     "craco-image-optimizer-plugin": "^0.0.4",
     "history": "^5.0.0",

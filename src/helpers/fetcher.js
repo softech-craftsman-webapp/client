@@ -1,5 +1,6 @@
 import axios from 'axios';
 import browserFingerprint from 'browser-fingerprint';
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
 import { md5 } from './md5';
 import toast from 'react-hot-toast';
 
@@ -15,51 +16,36 @@ const axiosInstance = axios.create({
   responseType: 'json'
 });
 
-axiosInstance.interceptors.response.use(
-  (response) => {
-    return response
-  }, 
-  (error) => {
-    if(error.response.data.message.includes('token is expired')) {
-      return refreshTokenFetcher();
-    }
+const refreshAuthLogic = failedRequest =>
+    axios.get(`${process.env.REACT_APP_API_BASE}/auth/refresh`, {
+      crossdomain: true,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('refresh_token')}`,
+        'X-Request-ID': uid,
+        'Accept': 'application/json'
+      }
+    })
+    .then(
+      tokenRefreshResponse => {
+      localStorage.setItem('token', tokenRefreshResponse.data.payload.token);
+      localStorage.setItem('refresh_token', tokenRefreshResponse.data.payload.refresh_token);
+      failedRequest.response.config.headers['Authorization'] = 'Bearer ' + tokenRefreshResponse.data.payload.token;
+      
+      return Promise.resolve();
+    })
+    .catch(error => {
+      Promise.reject(error);
+      toast.error('Something went wrong. Please log in again.');
 
-    if(error.response.data.message.includes('blacklisted')) {
       localStorage.removeItem('token');
       localStorage.removeItem('refresh_token');
       localStorage.removeItem('user_data');
       localStorage.removeItem('geo_data');
-      
-      window.location.replace('/auth/sign-in');
-    }
-    
-    return Promise.reject(error);
-  }
-);
 
-const refreshTokenFetcher = (originalRequest) => {
-  const config = {
-    crossdomain: true,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('refresh_token')}`,
-      'X-Request-ID': uid,
-      'Accept': 'application/json'
-    }
-  };
-
-  axios.get(`${process.env.REACT_APP_API_BASE}/auth/refresh`, config)
-    .then((res) => {
-      localStorage.setItem('token', res.data.payload.token);
-      localStorage.setItem('refresh_token', res.data.payload.refresh_token);
-      
-      toast.success('Token refreshed!');
-      window.location.reload();
-    })
-    // client error
-    .catch((error) => {
-      (error.response) ? toast.error(error.response.data.message) : toast.error(error.message);
+      return window.location.replace('/auth/sign-in');
     });
-}
+
+createAuthRefreshInterceptor(axiosInstance, refreshAuthLogic);
 
 const fetcher = (method, url, data) => {
   let headers = { };
