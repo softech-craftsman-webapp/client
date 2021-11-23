@@ -106,7 +106,7 @@ function Features() {
                       Just launching your business?
                     </div>
                     <div className="text-gray-600 text-base">
-                      Find fast working programmers who will build a website for ypu!.
+                      Find fast working programmers who will build a website for you!.
                     </div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
