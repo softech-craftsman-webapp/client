@@ -3,6 +3,8 @@ import React from 'react';
 import style from './style.module.css';
 import toast from 'react-hot-toast';
 
+import { Link } from 'react-router-dom';
+
 /**
  * @description HeaderAvatar component
  */
@@ -72,21 +74,15 @@ class HeaderAvatar extends React.Component {
                         </div>
 
                         <div className={`${style.dropdown_block}`}>
-                            <p className={`${style.dropdown_item}`}>
-                                Profile
-                            </p>
-                            <p className={`${style.dropdown_item}`}>
-                                Notifications
-                            </p>
-                            <p className={`${style.dropdown_item}`}>
-                                Privacy
-                            </p>
-                            <p className={`${style.dropdown_item}`}>
-                                Language
-                            </p>
-                            <p className={`${style.dropdown_item}`}>
-                                Settings
-                            </p>
+                            <Link to="/dashboard/job-offers/action/filter-created" className={`${style.dropdown_item}`}>
+                                Created jobs
+                            </Link>
+                            <Link to="/dashboard/job-offers/action/filter-created" className={`${style.dropdown_item}`}>
+                                Applied jobs
+                            </Link>
+                            <Link to="/dashboard/job-offers/action/filter-created" className={`${style.dropdown_item}`}>
+                                Create a new job offer
+                            </Link>
                         </div>
 
                         <form className={`${style.dropdown_block}`}>
