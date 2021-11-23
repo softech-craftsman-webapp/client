@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import fetcher from '../../../../helpers/fetcher';
 import JobOffers from '../../../../components/JobOffers';
 
-import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 function Main() {
@@ -111,13 +110,6 @@ function Main() {
                   </p>
                 </div>
               </div>
-              <p className="text-xs py-2 text-gray-600">
-                { 
-                  (state.category.time !== "0001-01-01 00:00:00") ? 
-                  moment(state.category.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
-                  "No Category"
-                } 
-              </p>
             </div>
 
             <div className="col-span-1 py-2">
@@ -134,13 +126,6 @@ function Main() {
                   </p>
                 </div>
               </div>
-              <p className="text-xs py-2 text-gray-600">
-                { 
-                  (state.job.time !== "0001-01-01 00:00:00") ? 
-                  moment(state.job.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
-                  "No Job"
-                } 
-              </p>
             </div>
 
             <div className="col-span-1 py-2">
@@ -157,13 +142,6 @@ function Main() {
                   </p>
                 </div>
               </div>
-              <p className="text-xs py-2 text-gray-600">
-                { 
-                  (state.transaction.time !== "0001-01-01 00:00:00") ? 
-                  moment(state.transaction.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
-                  "No Transaction"
-                }
-              </p>
             </div>
 
             <div className="col-span-1 py-2">
@@ -180,13 +158,6 @@ function Main() {
                   </p>
                 </div>
               </div>
-              <p className="text-xs py-2 text-gray-600">
-                { 
-                  (state.rating.time !== "0001-01-01 00:00:00") ? 
-                  moment(state.rating.time, "YYYY-MM-DD hh:mm:ss").fromNow() : 
-                  "No Rating"
-                }              
-              </p>
             </div>
 
           </div>
