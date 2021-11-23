@@ -168,7 +168,7 @@ const JobOfferEdit = () => {
                     <Button 
                         className="w-auto md:px-10 mt-5"
                         onClick={handleSubmission}>
-                        Edit Job
+                        Edit
                     </Button>
                 </section>
             : <div className="text-center text-medium text-gray-600 pt-10 mt-10">

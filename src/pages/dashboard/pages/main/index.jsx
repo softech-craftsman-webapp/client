@@ -193,7 +193,7 @@ function Main() {
         </section>
 
         <section id="info" className="pt-5">
-          <h4 className="text-xl font-semibold p-2 rounded border-b bg-white">Popular now</h4>
+          <h4 className="text-xl font-semibold p-2 rounded border-b">Popular now</h4>
 
           <div id="job-offers">
             <JobOffers data={[state.job.latest_job] || []} />
@@ -202,7 +202,7 @@ function Main() {
 
         
         <section id="info" className="pt-5">
-          <h4 className="text-xl font-semibold p-2 rounded border-b bg-white">Latest updates</h4>
+          <h4 className="text-xl font-semibold p-2 rounded border-b">Latest updates</h4>
 
           <div className="w-full">
             <div className="rounded">
@@ -220,6 +220,12 @@ function Main() {
                     <Link to={`/dashboard/applications/${state.rating.latest_rating.contract_id}`}>
                       The user #{state.rating.latest_rating.submitted_by_id} has rated you with {state.rating.latest_rating.points.toFixed(2)} points and left a comment: "{state.rating.latest_rating.comment}"
                     </Link>
+                  </div>
+                )}
+
+                { state.transaction.latest_transaction.amount === 0 && state.rating.latest_rating.points === 0 && (
+                  <div className="px-2 py-1 rounded mt-1 border-b">
+                    No updates
                   </div>
                 )}
               </div>

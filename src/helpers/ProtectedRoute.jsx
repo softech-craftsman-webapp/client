@@ -12,7 +12,7 @@ function ProtectedRoute({...routeProps}) {
   }
   
   else {
-    return <Redirect to={{ pathname: '/auth/sign-in' }} />;
+    return <Redirect to={{ pathname: '/auth/sign-in', search: `?redirect=${window.location.pathname}` }} />;
   }
 }
 

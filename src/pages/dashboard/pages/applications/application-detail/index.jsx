@@ -293,7 +293,9 @@ function ApplicationDetail() {
                   ID
                 </p>
                 <p className="col-span-2">
-                  {state.job.id}
+                  <A to={`/dashboard/job-offers/${state.job.id}`}>
+                    {state.job.id}
+                  </A>
                 </p>
               </div>
               <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
@@ -338,18 +340,15 @@ function ApplicationDetail() {
               </div>
               <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
                 <p className="text-gray-600">
-                  Latitude
+                  Location
                 </p>
                 <p className="col-span-2">
-                  {state.job.latitude}
-                </p>
-              </div>
-              <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">
-                <p className="text-gray-600">
-                  Longitude
-                </p>
-                <p className="col-span-2">
-                  {state.job.longitude}
+                  <a href={`https://maps.google.com/?q=${state.job.latitude},${state.job.longitude}`}
+                      rel="noreferrer"
+                      className="font-semibold"
+                      target="_blank">
+                    Open Map
+                  </a>
                 </p>
               </div>
               <div className="md:grid md:grid-cols-3 md:space-y-0 space-y-1 py-3">

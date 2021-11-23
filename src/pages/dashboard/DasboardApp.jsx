@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { Route } from 'react-router-dom';
+import { withQuicklink } from 'quicklink/dist/react/hoc.js';
 
 import Main from './pages/main';
 
@@ -26,6 +28,10 @@ import UserDetails from './pages/user-details';
 import UserDetailsCreate from './pages/user-details/user-details-create';
 import RevealUserDetails from './pages/user-details/reveal'
 
+const options = {
+  origins: []
+};
+
 /**
  * Protected routes
  * @returns {JSX.Element}
@@ -43,92 +49,92 @@ function DashboardApp() {
    * @ref src\components\Sidebar.jsx
    */
   return(
-    <>
-    <Route exact path={`${ROOT}`}>
-        <Main/>
-      </Route>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Route exact 
+             path={`${ROOT}`} 
+             component={withQuicklink(Main, options)}/>
 
       {/* Applications */}  
-      <Route exact path={`${ROOT}/applications`}>
-        <Applications/>
-      </Route>     
-
+      <Route exact 
+             path={`${ROOT}/applications`} 
+             component={withQuicklink(Applications, options)}/>
+      
       {/* id => application id */}
-      <Route exact path={`${ROOT}/applications/:id`}>
-        <ApplicationDetail/>
-      </Route>  
+      <Route exact 
+             path={`${ROOT}/applications/:id`} 
+             component={withQuicklink(ApplicationDetail, options)}/>
 
       {/* Transactions */}
-      <Route exact path={`${ROOT}/transactions`}>
-        <Transactions/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/transactions`} 
+             component={withQuicklink(Transactions, options)}/>
 
       {/* Ratings */}
-      <Route exact path={`${ROOT}/ratings`}>
-        <Ratings/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/ratings`} 
+             component={withQuicklink(Ratings, options)}/>
 
       {/* User Details */}
-      <Route exact path={`${ROOT}/user-details`}>
-        <UserDetails/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/user-details`} 
+             component={withQuicklink(UserDetails, options)}/>
 
-      <Route exact path={`${ROOT}/user-details/welcome`}>
-        <UserDetailsCreate/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/user-details/welcome`} 
+             component={withQuicklink(UserDetailsCreate, options)}/>
 
-      <Route exact path={`${ROOT}/user-details/:id/reveal`}>
-        <RevealUserDetails/>
-      </Route>    
+      <Route exact 
+             path={`${ROOT}/user-details/:id/reveal`} 
+             component={withQuicklink(RevealUserDetails, options)}/>
 
       {/* JOB OFFERS */}
-      <Route exact path={`${ROOT}/job-offers`}>
-        <JobOfferList/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers`} 
+             component={withQuicklink(JobOfferList, options)}/>
 
-      <Route exact path={`${ROOT}/job-offers/action/new`}>
-        <JobOfferCreate/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers/action/new`} 
+             component={withQuicklink(JobOfferCreate, options)}/>
 
-      <Route exact path={`${ROOT}/job-offers/action/filter-created`}>
-        <CreatedJobOffers/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers/action/filter-created`} 
+             component={withQuicklink(CreatedJobOffers, options)}/>
 
       {/* id => job id */}
-      <Route exact path={`${ROOT}/job-offers/:id/apply`}>
-        <ApplicationCreate/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers/:id/apply`} 
+             component={withQuicklink(ApplicationCreate, options)}/>
 
-      <Route exact path={`${ROOT}/job-offers/action/filter-applied`}>
-        <AppliedJobOffers/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers/action/filter-applied`} 
+             component={withQuicklink(AppliedJobOffers, options)}/>
       
       {/* id => job id */}
-      <Route exact path={`${ROOT}/job-offers/:id`}>
-        <JobOfferDetail/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers/:id`} 
+             component={withQuicklink(JobOfferDetail, options)}/>
 
-      <Route exact path={`${ROOT}/job-offers/:id/edit`}>
-        <JobOfferEdit/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/job-offers/:id/edit`} 
+             component={withQuicklink(JobOfferEdit, options)}/>
 
       {/* SETTINGS */}
-      <Route exact path={`${ROOT}/settings`}>
-        <Settings/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/settings`} 
+             component={withQuicklink(Settings, options)}/>
 
-      <Route exact path={`${ROOT}/settings/update-name`}>
-        <SettingsNameComponent/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/settings/update-name`} 
+             component={withQuicklink(SettingsNameComponent, options)}/>
 
-      <Route exact path={`${ROOT}/settings/update-email`}>
-        <SettingsEmailComponent/>
-      </Route>
+      <Route exact 
+             path={`${ROOT}/settings/update-email`} 
+             component={withQuicklink(SettingsEmailComponent, options)}/>
 
-      <Route exact path={`${ROOT}/settings/update-password`}>
-        <SettingsPasswordComponent/>
-      </Route>
-    </>
+      <Route exact 
+             path={`${ROOT}/settings/update-password`} 
+             component={withQuicklink(SettingsPasswordComponent, options)}/>
+    </Suspense>
   )
 }
 

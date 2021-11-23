@@ -22,24 +22,24 @@ class Contracts extends React.Component {
                         return (
                             <Link to={`/dashboard/applications/${item.id}`}
                                   key={index}
-                                  className="lg:flex rounded-lg border border-l-0">
-                                <div className="bg-black rounded-lg lg:w-2/12 py-4 block h-full shadow-inner">
-                                    <div className="text-center tracking-wide">
-                                        <div className="text-white font-bold text-2xl ">
+                                  className="flex rounded-lg border border-l-0">
+                                <div className="bg-black rounded-lg py-4 block h-full shadow-inner">
+                                    <div className="text-center tracking-wide px-4 py-2">
+                                        <div className="text-white font-bold text-base ">
                                             { moment(item.signed_by_professional_time).format('Do') }
                                         </div>
-                                        <div className="text-white font-normal text-xl">
+                                        <div className="text-white font-normal text-xs">
                                             { moment(item.signed_by_professional_time).format('MMMM').substring(0, 3) }
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="w-full  lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide">
-                                    <div className="mt-2 font-semibold text-gray-800 text-xl text-center lg:text-left px-2">
+                                <div className="w-full px-1 bg-white py-5 px-2 py-2 tracking-wide">
+                                    <div className="mt-2 font-semibold text-gray-800 text-xl text-left px-2">
                                         Application
                                     </div>
-                                    <div className="flex flex-row lg:justify-start justify-center">
-                                        <div className="text-gray-700 font-medium text-xs text-center lg:text-left px-2">
+                                    <div className="flex flex-row justify-start">
+                                        <div className="text-gray-700 font-medium text-xs text-left px-2">
                                             <span className="mr-1">
                                                 { moment(item.start_time).format('LL') }
                                             </span>
@@ -50,8 +50,8 @@ class Contracts extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-row items-center w-full lg:w-1/3 bg-white lg:justify-end justify-center px-2 py-4 lg:px-0">
-                                    <span className="tracking-wider text-gray-600 bg-gray-200 px-2 text-sm rounded leading-loose mx-2 font-semibold">
+                                <div className="pt-8 bg-white hidden md:block">
+                                    <span className="mt-5 text-gray-500 tracking-wider mr-2 px-2 text-xs leading-loose font-semibold">
                                         { (moment(item.signed_by_professional_time).valueOf() - moment(item.signed_by_recruiter_time).valueOf()) > 0 ? 'Pending' : 'Completed' }
                                     </span>
                                 </div>
