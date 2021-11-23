@@ -26,14 +26,19 @@ function Features() {
 
       {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div className="absolute inset-0 bg-gray-100 pointer-events-none mb-16" aria-hidden="true"></div>
+      <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-12 md:pt-20">
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h2 mb-4">Explore our solutions</h1>
-            <p className="text-xl text-gray-600">In these times there is an urging need for service providers, who can be found, contacted and rated on our site. </p>
+            <h2 className="mb-4 text-4xl leading-tighter font-semibold">
+              Explore our solutions
+            </h2>
+            <p className="text-xl text-gray-600">
+              In these times there is an urging need for service providers, who can be found, contacted and rated on our site.
+            </p>
           </div>
 
           {/* Section content */}
@@ -42,8 +47,14 @@ function Features() {
             {/* Content */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="h3 mb-3">Find trustful craftsman</h3>
-                <p className="text-xl text-gray-600">With our solution, you can find trated craftsman and service providers in many areas. Not just repairsman, but also freelancers are present on the site.</p>
+                <h3 className="text-2xl mb-3 font-semibold">
+                  Find trustful craftsman
+                </h3>
+                <p className="text-base text-gray-600">
+                  With our solution, you can find trated craftsman and
+                  service providers in many areas. Not just repairsman,
+                  but also freelancers are present on the site.
+                </p>
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
@@ -53,8 +64,12 @@ function Features() {
                   onClick={(e) => { e.preventDefault(); setTab(1); }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">In a need of an electrician?</div>
-                    <div className="text-gray-600">Needing help around a house with electric work? Find a good electrician with us!</div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">
+                      In a need of an electrician?
+                    </div>
+                    <div className="text-gray-600 text-base">
+                      Needing help around a house with electric work? Find a good electrician with us!
+                    </div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -68,8 +83,12 @@ function Features() {
                   onClick={(e) => { e.preventDefault(); setTab(2); }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Soon to a be a bride?</div>
-                    <div className="text-gray-600">Finding a professional wedding photographer is no problem with us!</div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">
+                      Soon to a be a bride?
+                    </div>
+                    <div className="text-gray-600 text-base">
+                      Finding a professional wedding photographer is no problem with us!
+                    </div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -83,8 +102,12 @@ function Features() {
                   onClick={(e) => { e.preventDefault(); setTab(3); }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Just launching your business?</div>
-                    <div className="text-gray-600">Find fast working programmers who will build a website for ypu!.</div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">
+                      Just launching your business?
+                    </div>
+                    <div className="text-gray-600 text-base">
+                      Find fast working programmers who will build a website for ypu!.
+                    </div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -111,8 +134,13 @@ function Features() {
                   leaveEnd="opacity-0 -translate-y-16"
                 >
                   <div className="relative inline-flex flex-col">
-                    <img className="md:max-w-none mx-auto rounded" src={code} width="500" height="462" alt="Features bg" />
-                    <img className="md:max-w-none absolute w-full left-0 transform animate-float" src={electrician} width="500" height="44" alt="Element" style={{ top: '30%' }} />
+                    <img className="md:max-w-none w-full left-0 transform animate-float rounded-xl shadow-sm border bg-gray-50"
+                      src={electrician}
+                      width="500"
+                      height="44"
+                      alt="Electrician"
+                      style={{ top: '30%' }}
+                    />
                   </div>
                 </Transition>
                 {/* Item 2 */}
@@ -128,8 +156,13 @@ function Features() {
                   leaveEnd="opacity-0 -translate-y-16"
                 >
                   <div className="relative inline-flex flex-col">
-                    <img className="md:max-w-none mx-auto rounded" src={electrician} width="500" height="462" alt="Features bg" />
-                    <img className="md:max-w-none absolute w-full left-0 transform animate-float" src={wedding} width="500" height="44" alt="Element" style={{ top: '30%' }} />
+                    <img className="md:max-w-none w-full left-0 transform animate-float rounded-xl shadow-sm border bg-gray-50"
+                      src={wedding}
+                      width="500"
+                      height="44"
+                      alt="Wedding"
+                      style={{ top: '30%' }}
+                    />
                   </div>
                 </Transition>
                 {/* Item 3 */}
@@ -145,8 +178,13 @@ function Features() {
                   leaveEnd="opacity-0 -translate-y-16"
                 >
                   <div className="relative inline-flex flex-col">
-                    <img className="md:max-w-none mx-auto rounded" src={wedding} width="500" height="462" alt="Features bg" />
-                    <img className="md:max-w-none absolute w-full left-0 transform animate-float" src={code} width="500" height="44" alt="Element" style={{ top: '30%' }} />
+                    <img className="md:max-w-none w-full left-0 transform animate-float rounded-xl shadow-sm border bg-gray-50"
+                      src={code}
+                      width="500"
+                      height="44"
+                      alt="Code"
+                      style={{ top: '30%' }}
+                    />
                   </div>
                 </Transition>
               </div>

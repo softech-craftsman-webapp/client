@@ -41,7 +41,7 @@ function App() {
           <AuthChangePassword/>
         </Route>  
 
-      {/* Protected route means that only logged in users can access it */}
+        {/* Protected route means that only logged in users can access it */}
         <ProtectedRoute path="/dashboard" component={Dashboard}/>
       
         <Route path="*">

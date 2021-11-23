@@ -14,48 +14,21 @@ function Footer() {
                     <div className="mb-2">
                         {/* Logo */}
                         <Link to="/" className="inline-block mt-5">
-                            <img src={logo} alt="Hiringo" className="filter invert grayscale w-12 h-12 mr-2 float-left" />
-                            <h2 className="text-2xl mt-2 font-semibold float-left">Hiringo</h2>
+                            <img src={logo} alt="Hiringo" className="filter w-10 h-10 mr-2 float-left items-center"/>
+                            <h2 className="logo-font text-3xl mt-2 font-semibold float-left items-center">
+                                Hiringo
+                            </h2>
                         </Link>
                     </div>
                     <div className="text-sm text-gray-600">
-                        <Link to="#" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Terms</Link> · <Link to="#" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Privacy Policy</Link>
+                        <div className="text-sm text-gray-600 mr-4 w-full">Made by the Hiringo Team, Some rights reserved.</div>
+                        <Link to="/legal/terms-and-conditions" className="text-xs text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Terms</Link> 
+                        <span className="px-2">·</span>
+                        <Link to="/legal/privacy-and-policy" className="text-xs text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Privacy Policy</Link>
                     </div>
                 </div>
 
-                {/* 2nd block */}
-                <div className="lg:col-span-4">
-                    <h6 className="text-gray-800 font-medium mb-2">Resources</h6>
-                    <ul className="text-sm">
-                    <li className="mb-2">
-                        <Link to="#" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Documentation</Link>
-                    </li>
-                    <li className="mb-2">
-                        <Link to="#" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Tutorials & Guides</Link>
-                    </li>
-                    </ul>
-                </div>
-
-                    {/* 3rd block */}
-                <div className="lg:col-span-4">
-                    <h6 className="text-gray-800 font-medium mb-2">Company</h6>
-                    <ul className="text-sm">
-                    <li className="mb-2">
-                        <Link to="#" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">About us</Link>
-                    </li>
-                    <li className="mb-2">
-                        <Link to="#" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Privacy Policy</Link>
-                    </li>
-                    </ul>
-                </div>
-
             </div>
-
-            <div className="md:flex md:items-center md:justify-between py-4 md:py-8 border-t border-gray-200">
-            <div className="text-sm text-gray-600 mr-4">Made by the Hiringo Team. All rights reserved.</div>
-
-            </div>
-
         </div>
     </footer>
 );

@@ -118,7 +118,7 @@ function Register() {
                     By clicking Sign up, you agree to the {process.env.REACT_APP_NAME} 
                     <A to="/legal/terms-and-conditions">Terms and Conditions</A> 
                     and 
-                    <A to="/lega/privacy-and-policy">Privacy Policy</A>.
+                    <A to="/legal/privacy-and-policy">Privacy Policy</A>.
                 </p>
             </form>
 
