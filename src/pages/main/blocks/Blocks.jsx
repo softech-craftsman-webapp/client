@@ -21,7 +21,7 @@ function Blocks() {
           </div>
 
           {/* Items */}
-          <div className="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
+          <div className="max-w-sm mx-auto grid gap-6 grid-cols-1 md:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
 
             {/* 1st item */}
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl border border-b-0">
@@ -36,8 +36,10 @@ function Blocks() {
                   </g>
                 </g>
               </svg>   
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Sign up</h4>
-              <p className="text-gray-600 text-center">Create an account with just an email address to get access.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Sign up</h4>
+              <p className="text-gray-600 text-left text-xs md:text-sm md:text-center">
+                Create an account with just an email address to get access.
+              </p>
             </div>
 
             {/* 2nd item */}
@@ -52,8 +54,10 @@ function Blocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Create a job offer</h4>
-              <p className="text-gray-600 text-center">Use the Jobs page to create your <br/> offer with a deadline.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Create a job offer</h4>
+              <p className="text-gray-600 text-left text-xs md:text-sm md:text-center">
+                Use the Jobs page to create your offer with a deadline.
+              </p>
             </div>
 
             {/* 3rd item */}
@@ -67,8 +71,10 @@ function Blocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Applications</h4>
-              <p className="text-gray-600 text-center">Wait for the service providers to <br/> apply for your offer.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Applications</h4>
+              <p className="text-gray-600 text-left text-xs md:text-sm md:text-center">
+                Wait for the service providers to apply for your offer.
+              </p>
             </div>
 
             {/* 4th item */}
@@ -84,8 +90,10 @@ function Blocks() {
                   </g>
                 </g>
               </svg>           
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Choosing the one</h4>
-              <p className="text-gray-600 text-center">Choose the most suitable service provider for the job.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Choosing the one</h4>
+              <p className="text-gray-600 text-left text-xs md:text-sm md:text-center">
+                Choose the most suitable service provider for the job.
+              </p>
             </div>
 
             {/* 5th item */}
@@ -99,8 +107,10 @@ function Blocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Contract</h4>
-              <p className="text-gray-600 text-center">Sign the contract online, so both of you benefit at the end.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Contract</h4>
+              <p className="text-gray-600 text-left text-xs md:text-sm md:text-center">
+                Sign the contract online, so both of you benefit at the end.
+              </p>
             </div>
 
             {/* 6th item */}
@@ -116,8 +126,10 @@ function Blocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">Job done</h4>
-              <p className="text-gray-600 text-center">The choosen service provider will get in touch to get your job done.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Job done</h4>
+              <p className="text-gray-600 text-left text-xs md:text-sm md:text-center">
+                The choosen service provider will get in touch to get your job done.
+              </p>
             </div>
 
           </div>

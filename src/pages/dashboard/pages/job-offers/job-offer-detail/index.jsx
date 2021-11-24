@@ -19,7 +19,10 @@ const JobDetails = () => {
     const userDetails = JSON.parse(localStorage.getItem('user_data') || '');
 
     const [state, setState] = React.useState({
-        job: {},
+        job: {
+            user_id: '',
+            is_contract_signed: false,
+        },
         contracts: [],
         category_name: '',
         transaction: {
@@ -205,9 +208,9 @@ const JobDetails = () => {
     }, [state.job.id]);
 
     return (
-        <>
+        <div className="min-h-screen">
             {(state.job && state.job.id) ? (
-                <>
+                <div className="container">
                     <section id="job_header"
                              style={{ backgroundImage: `url(${state.job.image})` }}
                              className="shadow border rounded-lg bg-blend-lighten flex h-96 bg-cover bg-no-repeat bg-center">
@@ -295,16 +298,16 @@ const JobDetails = () => {
                             {
                                 userDetails.id !== state.job.user_id ? (
                                     <>
-                                        { state.job.is_contract_signed && state.job.is_contract_signed !== true && (
+                                        { state.job.is_contract_signed === false && (
                                             <Link to={`/dashboard/job-offers/${id}/apply`}> 
                                                 <Button className="w-auto px-8 mr-48">
-                                                    Apply now
+                                                    Apply
                                                 </Button>
                                             </Link>
                                         )}
                                     </>
                                 ) : (
-                                    <div className="mr-48">
+                                    <div className="w-auto items-center pb-2">
                                         <Button className="w-auto px-8 mr-2"
                                                 onClick={deleteJob}>
                                             Delete
@@ -319,13 +322,13 @@ const JobDetails = () => {
                             }
                         </div>
                     </section>
-                </>
+                </div>
             ) : (
                 <div className="text-center pt-5 text-gray-500">
                     <p>This job is currently unavailable or deleted.</p>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
