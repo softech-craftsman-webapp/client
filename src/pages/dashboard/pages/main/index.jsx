@@ -98,66 +98,66 @@ function Main() {
 
             <div className="col-span-1 py-2">
               <div className="bg-gray-700 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-black text-white font-medium group">
-                <div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+                <div className="flex justify-center items-center p-3 w-12 h-12 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                   <i className="im im-archive stroke-current text-black transform transition-transform duration-500 ease-in-out"></i>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl truncate">
+                <div className="ml-4 text-right">
+                  <p className="text-medium truncate">
                     {state.category.popular_item.name}
                   </p>
-                  <p className='text-sm'>
-                    Popular Category
-                  </p>
                 </div>
               </div>
+              <p className='text-sm pt-2'>
+                Popular Category
+              </p>
             </div>
 
             <div className="col-span-1 py-2">
               <div className="bg-gray-700 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-black text-white font-medium group">
-                <div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+                <div className="flex justify-center items-center p-3 w-12 h-12 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                   <i className="im im-cube stroke-current text-black transform transition-transform duration-500 ease-in-out"></i>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl truncate">
+                <div className="ml-4 text-right">
+                  <p className="text-medium truncate">
                     {state.job.user_job_count} / {state.job.total}
                   </p>
-                  <p className='text-sm'>
-                    Jobs Contribution
-                  </p>
                 </div>
               </div>
+              <p className='text-sm pt-2'>
+                Jobs Contribution
+              </p>
             </div>
 
             <div className="col-span-1 py-2">
               <div className="bg-gray-700 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-black text-white font-medium group">
-                <div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+                <div className="flex justify-center items-center p-3 w-12 h-12 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                   <i className="im im-credit-card stroke-current text-black transform transition-transform duration-500 ease-in-out"></i>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl truncate">
+                <div className="ml-4 text-right">
+                  <p className="text-medium truncate">
                     {state.transaction.user_transaction_count} / {state.transaction.total}
-                  </p>
-                  <p className='text-sm'>
-                    Transactions
                   </p>
                 </div>
               </div>
+              <p className='text-sm pt-2'>
+                Transactions
+              </p>
             </div>
 
             <div className="col-span-1 py-2">
               <div className="bg-gray-700 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-black text-white font-medium group">
-                <div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+                <div className="flex justify-center items-center p-3 w-12 h-12 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
                   <i className="im im-star-half stroke-current text-black transform transition-transform duration-500 ease-in-out"></i>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl truncate">
+                <div className="ml-4 text-right">
+                  <p className="text-medium truncate">
                     {state.rating.user_rating_count} / {state.rating.total}
-                  </p>
-                  <p className='text-sm'>
-                    Ratings
                   </p>
                 </div>
               </div>
+              <p className='text-sm pt-2'>
+                Ratings
+              </p>
             </div>
 
           </div>
@@ -195,7 +195,7 @@ function Main() {
                 )}
 
                 { state.transaction.latest_transaction.amount === 0 && state.rating.latest_rating.points === 0 && (
-                  <div className="px-2 py-1 rounded mt-1 border-b">
+                  <div className="px-2 py-1 rounded mt-1">
                     No updates
                   </div>
                 )}
