@@ -8,7 +8,7 @@ import GeoTracker from './components/Location/GeoTracker';
 
 // styles
 import './global.scss';
-import './tailwind.css';
+import './index.css';
 
 let geoDetails = {};
 let latitude = 1;
